@@ -1,10 +1,10 @@
-# from cgitb import reset
-# import sys
-# from io import StringIO
 
-# input1 = "-2.5 4 3 -2.5 -5.5 4 3 3 -2.5 3"
+import sys
+from io import StringIO
 
-# sys.stdin = StringIO(input1)
+input1 = "-2.5 4 3 -2.5 -5.5 4 3 3 -2.5 3"
+
+sys.stdin = StringIO(input1)
 
 numbers_count = {}
 numbers = [float(x) for x in input().split()]
