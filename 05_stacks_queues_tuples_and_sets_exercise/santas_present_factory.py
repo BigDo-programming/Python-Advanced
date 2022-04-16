@@ -62,11 +62,10 @@ else:
     print("No presents this Christmas!")
 
 if materials_for_crafting:
-    print(f"Materials left: {', '.join([str(x) for x in materials_for_crafting])}")
+    print(f"Materials left: {', '.join(reversed([str(x) for x in materials_for_crafting]))}")
 if magic_level:
-    print(f"Materials left: {', '.join([str(x) for x in magic_level])}")
+    print(f"Magic left: {', '.join([str(x) for x in magic_level])}")
 
 for toy_name, amount in sorted(crafted_presents.items()):
     print(f"{toy_name}: {amount}")
 
-# ToDo има грешка
