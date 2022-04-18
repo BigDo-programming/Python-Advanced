@@ -1,5 +1,6 @@
 import sys
 from io import StringIO
+from pprint import pprint
 
 input1 = """3, 6
 7 1 3 3 2 1
@@ -41,17 +42,12 @@ sys.stdin = StringIO(input1)
 # [print(x) for x in column_sums]
 
 
-
-
-
-n,m = [int(x) for x in input().split(", ")]
-
-matrix = []
-for i in range(n):
-    row = [int(x) for x in input().split()]
-    matrix.append(row)
-
-
+# n, m = [int(x) for x in input().split(", ")]
+#
+# matrix = []
+# for i in range(n):
+#     row = [int(x) for x in input().split()]
+#     matrix.append(row)
 
 # column_sums = [0]*m
 # for r in range(n):
@@ -60,24 +56,26 @@ for i in range(n):
 #         column_sums[c] += value
 
 
-for i in range(m):
-    sum_matrix_columns = 0
-    for j in range(n):
+# for i in range(m):
+#     sum_matrix_columns = 0
+#     for j in range(n):
+#
+#         value = matrix[j][i]
+#         sum_matrix_columns += value
+#
+#     print(sum_matrix_columns)
+#
 
-        value = matrix[j][i]
-        sum_matrix_columns += value
+n, m = [int(x) for x in input().split(", ")]
 
-    print(sum_matrix_columns)
+matrix = []
+for i in range(n):
+    row = [int(x) for x in input().split()]
+    matrix.append(row)
 
-
-
-
-
-
-
-
-
-
-
-
-
+col_sum = 0
+for c in range(m):
+    for r in range(n):
+        col_sum += matrix[r][c]
+    print(col_sum)
+    col_sum = 0

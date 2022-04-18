@@ -88,10 +88,16 @@ for i in range(n):
     value = [int(x) for x in input().split(", ")]
     matrix.append(value)
 
-sums = []
-for r in range(n - 1):
-    for c in range(m - 1):
-        current_sum = matrix[r][c] + matrix[r][c + 1] + matrix[r + 1][c] + matrix[r + 1][c + 1]
-        sums.append((current_sum,r,c))
+position = None
+max_sum = 0
+for r in range(n - 1, 0, -1):
+    for c in range(m - 1, 0, -1):
+        current_sum = matrix[r][c] + matrix[r][c - 1] + matrix[r - 1][c] + matrix[r - 1][c - 1]
+        if current_sum >= max_sum:
+            max_sum = current_sum
+            position = (r, c)
 
-print(sums)
+row, col = position
+print(matrix[row - 1][col - 1], matrix[row - 1][col])
+print(matrix[row][col - 1], matrix[row][col])
+print(max_sum)
