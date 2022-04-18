@@ -11,15 +11,21 @@ sys.stdin = StringIO(input1)
 
 matrix = []
 n = int(input())
-for i in range(n):
+for _ in range(n):
     value = [int(x) for x in input().split()]
     matrix.append(value)
 
 
 primary_diagonal = 0
 secondary_diagonal = 0
-for c in range(n):
-    primary_diagonal += matrix[c][c]
-    secondary_diagonal += matrix[c][n - 1 - c]
+
+for i in range(n):
+    primary_diagonal += matrix[i][i]
+    secondary_diagonal += matrix[i][n - 1 - i]
+
+    # print(matrix[i][len(matrix) - 1 - i])
+    # print(matrix[len(matrix) - 1 - i][i])
+
+
 
 print(abs(primary_diagonal - secondary_diagonal))
