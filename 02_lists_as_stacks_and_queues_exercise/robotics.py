@@ -73,3 +73,6 @@ while items:
             break
     if not found_robot:
         items.append(current_item)
+
+
+# ToDo - da q resha sam

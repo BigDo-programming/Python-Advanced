@@ -1,5 +1,3 @@
-from cgitb import reset
-from os import name
 import sys
 from io import StringIO
 
@@ -15,7 +13,13 @@ Joey"""
 
 sys.stdin = StringIO(input1)
 
-
+names = set()
 n = int(input())
-names = {input() for _ in range(n)}
-[print(name) for name in names]
+for i in range(n):
+    names.add(input())
+
+[print(x) for x in names]
+
+# n = int(input())
+# names = {input() for _ in range(n)}
+# [print(name) for name in names]

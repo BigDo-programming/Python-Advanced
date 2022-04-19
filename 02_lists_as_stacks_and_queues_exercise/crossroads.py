@@ -54,3 +54,5 @@ while not crash_happened:
 if not crash_happened:
     print("Everyone is safe.")
     print(f"{passed_cars} total cars passed the crossroads.")
+
+# ToDo - da q resha sam
