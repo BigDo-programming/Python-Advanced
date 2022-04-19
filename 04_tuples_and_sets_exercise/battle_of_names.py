@@ -17,6 +17,26 @@ Stefan"""
 
 sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 n = int(input())
 odd_set = set()
 even_set = set()

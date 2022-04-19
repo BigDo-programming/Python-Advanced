@@ -16,35 +16,68 @@ swap 0 0 0 1
 swap 0 1 0 0
 END"""
 
-sys.stdin = StringIO(input2)
+sys.stdin = StringIO(input1)
 
 
-def is_valid(r, c, rows, cols):
-    return 0 <= r < rows or 0 <= r < cols
+def is_valid(r, c, row, col):
+    return 0 <= row < r and 0 <= col < c
 
 
-n, m = [int(x) for x in input().split()]
-matrix = []
-for r in range(n):
-    value = [x for x in input().split()]
-    matrix.append(value)
+def make_matrix():
+    new_matrix = []
+    n, m = [int(x) for x in input().split()]
+    for _ in range(n):
+        value = [x for x in input().split()]
+        new_matrix.append(value)
+    return new_matrix
 
-while True:
-    command = input()
-    if command == "END":
-        break
 
+matrix = make_matrix()
+
+command = input()
+while not command == "END":
     command_split = command.split()
-
-    if len(command_split) != 5 or command_split[0] != 'swap':
+    if not command_split[0] == 'swap' or not len(command_split[1:]) == 4:
         print("Invalid input!")
-        continue
 
-    row1, col1, row2, col2 = [int(x) for x in command_split[1:]]
-    if not is_valid(row1, col1, n, m) or not is_valid(row2, col2, n, m):
-        print("Invalid input!")
-        continue
+    else:
+        row1, col1, row2, col2 = [int(x) for x in command_split[1:]]
+        if is_valid(len(matrix), len(matrix[0]), row1, col1) and is_valid(len(matrix), len(matrix[0]), row2, col2):
+            matrix[row1][col1], matrix[row2][col2] = matrix[row2][col2], matrix[row1][col1]
+            for row in matrix:
+                [print(x, end=" ") for x in row]
+                print()
+        else:
+            print("Invalid input!")
 
-    matrix[row1][col1], matrix[row2][col2] = matrix[row2][col2], matrix[row1][col1]
-    for row_elements in matrix:
-        print(' '.join([str(x) for x in row_elements]))
+    command = input()
+
+# def is_valid(r, c, rows, cols):
+#     return 0 <= r < rows or 0 <= r < cols
+#
+#
+# n, m = [int(x) for x in input().split()]
+# matrix = []
+# for r in range(n):
+#     value = [x for x in input().split()]
+#     matrix.append(value)
+#
+# while True:
+#     command = input()
+#     if command == "END":
+#         break
+#
+#     command_split = command.split()
+#
+#     if len(command_split) != 5 or command_split[0] != 'swap':
+#         print("Invalid input!")
+#         continue
+#
+#     row1, col1, row2, col2 = [int(x) for x in command_split[1:]]
+#     if not is_valid(row1, col1, n, m) or not is_valid(row2, col2, n, m):
+#         print("Invalid input!")
+#         continue
+#
+#     matrix[row1][col1], matrix[row2][col2] = matrix[row2][col2], matrix[row1][col1]
+#     for row_elements in matrix:
+#         print(' '.join([str(x) for x in row_elements]))

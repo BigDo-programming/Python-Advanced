@@ -31,16 +31,6 @@ else:
     print("Parking Lot is Empty")
 
 
-
-
-
-
-
-
-
-
-
-
 # n = int(input())
 # for _ in range(n):
 #     direction, car = input().split(', ')

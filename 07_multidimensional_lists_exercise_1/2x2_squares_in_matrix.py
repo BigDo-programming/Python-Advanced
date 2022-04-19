@@ -8,16 +8,21 @@ I J B B"""
 
 sys.stdin = StringIO(input1)
 
-matrix = []
-n, m = [int(x) for x in input().split()]
-for i in range(n):
-    value = [x for x in input().split()]
-    matrix.append(value)
 
-count = 0
+def make_matrix():
+    new_matrix = []
+    n, m = [int(x) for x in input().split()]
+    for _ in range(n):
+        value = [x for x in input().split()]
+        new_matrix.append(value)
+    return new_matrix
 
-for r in range(n-1):
-    for c in range(m-1):
-        if matrix[r][c] == matrix[r][c+1] == matrix[r+1][c] == matrix[r+1][c+1]:
-            count += 1
-print(count)
+
+matrix = make_matrix()
+cont = 0
+for r in range(len(matrix) - 1):
+    for c in range(len(matrix[0]) - 1):
+        if matrix[r][c] == matrix[r + 1][c] == matrix[r][c + 1] == matrix[r + 1][c + 1]:
+            cont += 1
+
+print(cont)
