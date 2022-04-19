@@ -20,28 +20,30 @@ sys.stdin = StringIO(input1)
 
 from collections import deque
 
-petrol_pump = []
+petrol_pump = deque()
 n = int(input())
 for i in range(n):
     data = [int(x) for x in input().split()]
     petrol_pump.append(data)
 
 
-for i,j in petrol_pump:
-    print(i,j)
+for index in range(n):
+    complete = True
+    car_fuel = 0
 
+    for petrol, distance in petrol_pump:
+        car_fuel += petrol
 
+        if car_fuel < distance:
+            complete = False
+            break
 
+        car_fuel -= distance
+    if complete:
+        break
+    petrol_pump.append(petrol_pump.popleft())
 
-
-
-
-
-
-
-
-
-
+print(index)
 
 # queue = deque()
 # n = int(input())
@@ -54,6 +56,7 @@ for i,j in petrol_pump:
 # for index in range(n):
 #     car_fuel = 0
 #     completed = True
+
 #     for petrol, distance in queue:
 #
 #         car_fuel += petrol
