@@ -1,24 +1,22 @@
-from cgitb import reset
-import queue
 import sys
 from io import StringIO
-from collections import deque
 
-input1 = """George Peter Michael William Thomas
-10"""
+input1 = """Tracy Emily Daniel
+2"""
 
 sys.stdin = StringIO(input1)
-potatos = input().split()
 
-potatos_queue = deque(potatos)
-step = int(input())
+from collections import deque
 
-while potatos_queue:
-    for _ in range(step - 1):
-        potatos_queue.append(potatos_queue.popleft())
-    potatos_to_remove = potatos_queue.popleft()
+potato_players = deque(input().split())
+n = int(input())
 
-    if potatos_queue:
-        print(f'Removed {potatos_to_remove}')
+while potato_players:
+    for _ in range(n - 1):
+        potato_players.append(potato_players.popleft())
+    out_player = potato_players.popleft()
+    if potato_players:
+        print(f'Removed {out_player}')
     else:
-        print(f'Last is {potatos_to_remove}')
+        print(f'Last is {out_player}')
+

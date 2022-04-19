@@ -9,13 +9,13 @@ sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input2)
 # sys.stdin = StringIO(input3)
 
+
+reverse_numbers = [int(x) for x in input().split()]
+while reverse_numbers:
+    print(reverse_numbers.pop(), end=" ")
+
 # my_list = [int(x) for x in input().split()]
 # stack = []
 # while my_list:
 #     stack.append(my_list.pop())
 # print(*stack)
-
-my_list = [int(x) for x in input().split()]
-
-while my_list:
-    print(my_list.pop(),end=' ')

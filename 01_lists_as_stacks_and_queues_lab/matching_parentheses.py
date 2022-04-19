@@ -1,5 +1,3 @@
-from ast import Expression
-from cgitb import reset
 import sys
 from io import StringIO
 
@@ -7,16 +5,30 @@ input1 = '1 + (2 - (2 + 3) * 4 / (3 + 1)) * 5'
 
 sys.stdin = StringIO(input1)
 
-expression = input()
-parentheses = []
+open_parentheses = []
+text = input()
+for i in range(len(text)):
 
-for index, ch in enumerate(expression):
-    if ch == '(':
-        parentheses.append(index)
-    elif ch == ')':
-        closing_index = index
-        opening_index = parentheses.pop()
-        print(expression[opening_index:closing_index+1])
+    if text[i] == "(":
+        open_parentheses.append(i)
+
+    elif text[i] == ")":
+        start_index = open_parentheses.pop()
+        end_index = i
+        print(text[start_index:end_index+1])
 
 
-# Стек 'Stacks' (Последния елемент влязъл първи излиза) - е подмножество на листа е което се използва само apend() and pop()!!!
+
+# expression = input()
+# parentheses = []
+#
+# for index, ch in enumerate(expression):
+#     if ch == '(':
+#         parentheses.append(index)
+#     elif ch == ')':
+#         closing_index = index
+#         opening_index = parentheses.pop()
+#         print(expression[opening_index:closing_index+1])
+
+
+

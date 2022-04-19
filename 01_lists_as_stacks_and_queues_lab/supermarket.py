@@ -1,8 +1,5 @@
-from cgitb import reset
-import queue
 import sys
 from io import StringIO
-from collections import deque
 
 input1 = """George
 Peter
@@ -15,21 +12,32 @@ Linda
 End"""
 
 sys.stdin = StringIO(input1)
-# Queues Опашка (deque - from collections import deque) (първия елемент влязъл първи излиза - може да е от ляво на дясно и обратно)
+
+from collections import deque
 
 queue = deque()
-while True:
-    command = input()
-
-    if command == 'End':
-        print(f'{len(queue)} people remaining.')
-        break
-    
-    elif command == "Paid":
+command = input()
+while not command == "End":
+    if command == "Paid":
         while queue:
-            print(queue.pop())
-
+            print(queue.popleft())
     else:
-        queue.appendleft(command)
+        queue.append(command)
 
-    
+    command = input()
+print(f"{len(queue)} people remaining.")
+
+# queue = deque()
+# while True:
+#     command = input()
+#
+#     if command == 'End':
+#         print(f'{len(queue)} people remaining.')
+#         break
+#
+#     elif command == "Paid":
+#         while queue:
+#             print(queue.pop())
+#
+#     else:
+#         queue.appendleft(command)
