@@ -9,7 +9,7 @@ input1 = """4 5
 
 sys.stdin = StringIO(input1)
 
-
+import sys
 def make_matrix():
     new_matrix = []
     n, m = [int(x) for x in input().split()]
@@ -20,7 +20,7 @@ def make_matrix():
 
 
 matrix = make_matrix()
-max_sum = 0
+max_sum = -sys.maxsize
 start_r = 0
 start_c = 0
 for r in range(len(matrix) - 2):
@@ -59,5 +59,3 @@ print(f"{matrix[start_r + 2][start_c]} {matrix[start_r + 2][start_c + 1]} {matri
 # print(matrix[best_row][best_col], matrix[best_row][best_col + 1], matrix[best_row][best_col + 2])
 # print(matrix[best_row + 1][best_col], matrix[best_row + 1][best_col + 1], matrix[best_row + 1][best_col + 2])
 # print(matrix[best_row + 2][best_col], matrix[best_row + 2][best_col + 1], matrix[best_row + 2][best_col + 2])
-
-# Todo 80/1oo

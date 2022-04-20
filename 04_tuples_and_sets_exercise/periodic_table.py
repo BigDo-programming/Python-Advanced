@@ -16,8 +16,16 @@ O Ne"""
 # sys.stdin = StringIO(input1)
 sys.stdin = StringIO(input2)
 
-unique_elements = set()
+set1 = set()
+
 n = int(input())
 for i in range(n):
-    [unique_elements.add(x) for x in input().split()]
-[print(x) for x in unique_elements]
+    [set1.add(x) for x in input().split()]
+[print(x) for x in set1]
+
+
+# unique_elements = set()
+# n = int(input())
+# for i in range(n):
+#     [unique_elements.add(x) for x in input().split()]
+# [print(x) for x in unique_elements]
