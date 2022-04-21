@@ -15,57 +15,119 @@ sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input3)
 from collections import deque
 
-materials_for_crafting = [int(x) for x in input().split()]
-magic_level = deque([int(x) for x in input().split()])
-
-presents = {
+present = {
     150: "Doll",
     250: "Wooden train",
     300: "Teddy bear",
     400: "Bicycle",
 }
+santa_present = {
+    "Doll": 0,
+    "Wooden train": 0,
+    "Teddy bear": 0,
+    "Bicycle": 0,
+}
+boxes = [int(x) for x in input().split()]
+magic = deque([int(x) for x in input().split()])
 
-crafted_presents = {}
+while boxes and magic:
+    current_box = boxes.pop()
+    current_magic = magic.popleft()
+    result = current_magic * current_box
 
-while materials_for_crafting and magic_level:
-    box = materials_for_crafting.pop()
-    magic_value = magic_level.popleft()
-    result = box * magic_value
-    if box == 0 and magic_value == 0:
+    if current_box == 0 and current_magic == 0:
         continue
-    if box == 0:
-        magic_level.appendleft(magic_value)
+
+    if current_box == 0:
+        magic.appendleft(current_magic)
         continue
 
-    if magic_value == 0:
-        materials_for_crafting.append(box)
+    if current_magic == 0:
+        boxes.append(current_box)
         continue
 
     if result < 0:
-        materials_for_crafting.append(box + magic_value)
+        boxes.append(current_magic + current_box)
 
-    elif result in presents:
-        present = presents[result]
+    elif result in present:
+        new_present = present[result]
 
-        if present in crafted_presents:
-            crafted_presents[present] += 1
+        if new_present in santa_present:
+            santa_present[new_present] += 1
         else:
-            crafted_presents[present] = 1
-    else:
-        materials_for_crafting.append(box + 15)
-is_done = ("Doll" in crafted_presents and "Wooden train" in crafted_presents) or \
-          ("Bicycle" in crafted_presents and "Teddy bear" in crafted_presents)
+            santa_present[new_present] = 1
 
-if is_done:
+    else:
+        boxes.append(current_box + 15)
+
+if (santa_present["Doll"] > 0 and santa_present["Wooden train"] > 0) or santa_present["Teddy bear"] > 0 and \
+        santa_present["Bicycle"] > 0:
     print("The presents are crafted! Merry Christmas!")
 else:
     print("No presents this Christmas!")
+if boxes:
+    print(f"Materials left: {', '.join([str(x) for x in boxes[::-1]])}")
+if magic:
+    print(f"Magic left: {', '.join([str(x) for x in magic])}")
+for key, value in sorted(santa_present.items()):
+    if value > 0:
+        print(f"{key}: {value}")
 
-if materials_for_crafting:
-    print(f"Materials left: {', '.join(reversed([str(x) for x in materials_for_crafting]))}")
-if magic_level:
-    print(f"Magic left: {', '.join([str(x) for x in magic_level])}")
-
-for toy_name, amount in sorted(crafted_presents.items()):
-    print(f"{toy_name}: {amount}")
-
+#
+# from collections import deque
+#
+# present = {
+#     150: "Doll",
+#     250: "Wooden train",
+#     300: "Teddy bear",
+#     400: "Bicycle",
+# }
+# santa_present = {
+#     "Doll": 0,
+#     "Wooden train": 0,
+#     "Teddy bear": 0,
+#     "Bicycle": 0,
+# }
+# boxes = [int(x) for x in input().split()]
+# magic = deque([int(x) for x in input().split()])
+# the_presents_crafted = False
+#
+# while boxes and magic:
+#     current_box = boxes.pop()
+#     current_magic = magic.popleft()
+#
+#     if current_box > 0 and current_magic > 0:
+#         result = current_magic * current_box
+#         if result in present:
+#
+#             santa_present[present[result]] += 1
+#             if (santa_present["Doll"] > 0 and santa_present["Wooden train"] > 0) or santa_present["Teddy bear"] > 0 and \
+#                     santa_present["Bicycle"] > 0:
+#                 the_presents_crafted = True
+#
+#         else:
+#             boxes.append(current_box + 15)
+#
+#     elif current_box < 0 or current_magic < 0:
+#         result = current_magic + current_box
+#         boxes.append(result)
+#
+#     elif current_box == 0 or current_magic == 0 or (current_box == 0 and current_magic == 0):
+#         if current_box == 0:
+#             magic.appendleft(current_magic)
+#         elif current_magic == 0:
+#             boxes.append(current_box)
+#         elif current_box == 0 and current_magic == 0:
+#             continue
+#
+# if the_presents_crafted:
+#     print("The presents are crafted! Merry Christmas!")
+# else:
+#     print("No presents this Christmas!")
+# if boxes:
+#     print(f"Materials left: {', '.join([str(x) for x in boxes[::-1]])}")
+# if magic:
+#     print(f"Magic left: {', '.join([str(x) for x in magic])}")
+# for key, value in sorted(santa_present.items()):
+#     if value > 0:
+#         print(f"{key}: {value}")
