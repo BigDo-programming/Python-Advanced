@@ -18,19 +18,19 @@ text = deque(input().split())
 
 main_colors = {"red", "yellow", "blue"}
 secondary_colors = {"orange", "purple", "green"}
-collected_colors = set()
+collected_colors = []
 while text:
     first_word = text.popleft()
     last_word = text.pop() if text else ""
     word = first_word + last_word
 
     if word in main_colors or word in secondary_colors:
-        collected_colors.add(word)
+        collected_colors.append(word)
         continue
 
     word = last_word + first_word
     if word in main_colors or word in secondary_colors:
-        collected_colors.add(word)
+        collected_colors.append(word)
         continue
 
     first_word = first_word[:-1]
@@ -43,7 +43,7 @@ while text:
 result = []
 required_colors = {
     'orange': ['red', 'yellow'],
-    'purple': ['red'  'blue'],
+    'purple': ['red' , 'blue'],
     'green': ['yellow', 'blue'],
 }
 for color in collected_colors:
@@ -58,4 +58,3 @@ for color in collected_colors:
         if is_valid:
             result.append(color)
 print(result)
-# ima greshka!!!
