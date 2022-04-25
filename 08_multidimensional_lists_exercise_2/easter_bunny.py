@@ -20,7 +20,7 @@ input2 = """8
 73 88 78 32 37 52 X 22"""
 input3 = """"""
 
-sys.stdin = StringIO(input1)
+sys.stdin = StringIO(input2)
 
 
 # sys.stdin = StringIO(input2)
