@@ -36,16 +36,17 @@ def create_value(row, col, matrix):
         count += 1
     if in_matrix(row - 1, col + 1, matrix) and matrix[row - 1][col + 1] == "*":
         count += 1
-    if in_matrix(row, col - 1 , matrix) and matrix[row][col - 1] == "*" :
+
+    if in_matrix(row, col - 1, matrix) and matrix[row][col - 1] == "*":
         count += 1
-    if in_matrix(row, col + 1, matrix) and matrix[row][col + 1] == "*" :
+    if in_matrix(row, col + 1, matrix) and matrix[row][col + 1] == "*":
         count += 1
 
-    if in_matrix(row+ 1, col - 1, matrix) and matrix[row + 1][col - 1] == "*":
+    if in_matrix(row + 1, col - 1, matrix) and matrix[row + 1][col - 1] == "*":
         count += 1
-    if  in_matrix(row+ 1, col, matrix) and matrix[row + 1][col] == "*":
+    if in_matrix(row + 1, col, matrix) and matrix[row + 1][col] == "*":
         count += 1
-    if in_matrix(row+ 1, col + 1, matrix) and matrix[row + 1][col + 1] == "*":
+    if in_matrix(row + 1, col + 1, matrix) and matrix[row + 1][col + 1] == "*":
         count += 1
     return count
 
