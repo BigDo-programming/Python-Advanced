@@ -1,9 +1,8 @@
 def multiply(*args):
-    sum = 1
+    result = 1
     for i in args:
-        sum *= i
-    return sum
-
+        result *= i
+    return result
 
 
 print(multiply(1, 4, 5))
