@@ -31,6 +31,61 @@ left"""
 
 input3 = """"""
 
-# sys.stdin = StringIO(input1)
+sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input2)
-sys.stdin = StringIO(input3)
+
+
+# sys.stdin = StringIO(input3)
+def move(direction, row, col):
+    if direction == "up":
+        return row - 1, col
+    if direction == "down":
+        return row + 1, col
+    if direction == "left":
+        return row, col - 1
+    if direction == "right":
+        return row, col + 1
+
+
+path = []
+coins = 0
+size = int(input())
+player_row = 0
+player_col = 0
+
+matrix = []
+for r in range(size):
+    value = input().split()
+    matrix.append(value)
+    for c in range(size):
+        if matrix[r][c] == "P":
+            player_row, player_col = r, c
+path.append([player_row, player_col])
+while True:
+    command = input()
+    player_row, player_col = move(command, player_row, player_col)
+    if 0 > player_row:
+        player_row = player_row % size
+    if 0 > player_col:
+        player_col = player_col % size
+    if player_row >= size:
+        player_row = player_row % size
+    if player_col >= size:
+        player_col = player_col % size
+    path.append([player_row, player_col])
+    if matrix[player_row][player_col].isdigit():
+        coins += int(matrix[player_row][player_col])
+        matrix[player_row][player_col] = "*"
+    if matrix[player_row][player_col] == "X":
+        coins //= 2
+        break
+    if coins >= 100:
+        break
+
+
+if coins >= 100:
+    print(f"You won! You've collected {coins} coins.")
+else:
+    print(f"Game over! You've collected {coins} coins.")
+print(f"Your path:")
+[print(x)for x in path]
