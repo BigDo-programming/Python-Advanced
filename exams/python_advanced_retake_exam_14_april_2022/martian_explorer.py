@@ -56,33 +56,34 @@ matrix = []
 size = 6
 rover_row = 0
 rover_col = 0
-deposit = 0
+water = 0
+metal = 0
+concrete = 0
 for row in range(size):
     value = input().split()
     matrix.append(value)
     for col in range(size):
         if matrix[row][col] == "E":
             rover_row, rover_col = row, col
-        if matrix[row][col] == "W" or matrix[row][col] == "M" or matrix[row][col] == "C":
-            deposit += 1
+
 command = input().split(", ")
 for i in command:
     rover_row, rover_col = move(rover_row, rover_col, size, i)
     if matrix[rover_row][rover_col] == "W":
-        deposit -= 1
+        water += 1
         print(f"Water deposit found at ({rover_row}, {rover_col})")
     elif matrix[rover_row][rover_col] == "M":
-        deposit -= 1
+        metal += 1
         print(f"Metal deposit found at ({rover_row}, {rover_col})")
     elif matrix[rover_row][rover_col] == "C":
-        deposit -= 1
+        concrete += 1
         print(f"Concrete deposit found at ({rover_row}, {rover_col})")
     elif matrix[rover_row][rover_col] == "R":
         print(f"Rover got broken at ({rover_row}, {rover_col})")
         break
 
-if deposit == 0:
+if water > 0 and metal > 0 and concrete > 0:
     print("Area suitable to start the colony.")
 else:
     print("Area not suitable to start the colony.")
-# Todo 92/100
+

@@ -19,6 +19,7 @@ bowls_ramen = [int(x) for x in input().split(", ")]
 customers = deque([int(x) for x in input().split(", ")])
 
 while bowls_ramen or customers:
+
     if not bowls_ramen:
         break
     if not customers:
