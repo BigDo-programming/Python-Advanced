@@ -1,4 +1,5 @@
 def start_spring(**kwargs):
+    data = ''
     my_dict = {}
     for key, value in kwargs.items():
         if value not in my_dict:
@@ -8,7 +9,12 @@ def start_spring(**kwargs):
     my_dict = dict(sorted(my_dict.items(), key=lambda kv: (-len(kv[1]), kv[0])))
     # sorted(my_dict.items(),key=lambda x: len(x))
     for key, value in my_dict.items():
-        print(key, sorted(value))
+
+        data += f"{key}:" + "\n"
+        for i in sorted(value):
+            data += f"-{i}" + "\n"
+    return data.strip()
+
 
 
 # example_objects = {"Water Lilly": "flower",
@@ -26,14 +32,14 @@ def start_spring(**kwargs):
 #                    "Warblers": "bird",
 #                    "Shrikes": "bird",}
 # print(start_spring(**example_objects))
-example_objects = {"Magnolia": "tree",
-                   "Swallow": "bird",
-                   "Thrushes": "bird",
-                   "Pear": "tree",
-                   "Cherries": "tree",
-                   "Shrikes": "bird",
-                   "Butterfly": "insect"}
-print(start_spring(**example_objects))
+# example_objects = {"Magnolia": "tree",
+#                    "Swallow": "bird",
+#                    "Thrushes": "bird",
+#                    "Pear": "tree",
+#                    "Cherries": "tree",
+#                    "Shrikes": "bird",
+#                    "Butterfly": "insect"}
+# print(start_spring(**example_objects))
 
 # The collections sorted by their number of elements in descending order.
-    # o If two or more collections have the same number of elements in them, return them in ascending order (alphabetically) by the type's name.
+# o If two or more collections have the same number of elements in them, return them in ascending order (alphabetically) by the type's name.
