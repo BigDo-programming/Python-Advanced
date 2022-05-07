@@ -26,7 +26,8 @@ def detonate(r, c, m):
     power = m[r][c]
     if m[r][c] > 0:
         m[r][c] = 0
-
+    else:
+        return matrix
     if 0 <= r - 1 < len(matrix) and 0 <= c - 1 < len(matrix):
         if m[r - 1][c - 1] > 0:
             m[r - 1][c - 1] -= power
@@ -37,19 +38,19 @@ def detonate(r, c, m):
         if m[r - 1][c + 1] > 0:
             m[r - 1][c + 1] -= power
     if 0 <= r < len(matrix) and 0 <= c - 1 < len(matrix):
-        if m[r][c - 1] > 0 :
+        if m[r][c - 1] > 0:
             m[r][c - 1] -= power
     if 0 <= r < len(matrix) and 0 <= c + 1 < len(matrix):
-        if m[r][c + 1] > 0 :
+        if m[r][c + 1] > 0:
             m[r][c + 1] -= power
     if 0 <= r + 1 < len(matrix) and 0 <= c - 1 < len(matrix):
-        if m[r + 1][c - 1] > 0 :
+        if m[r + 1][c - 1] > 0:
             m[r + 1][c - 1] -= power
     if 0 <= r + 1 < len(matrix) and 0 <= c < len(matrix):
-        if m[r + 1][c] > 0 :
+        if m[r + 1][c] > 0:
             m[r + 1][c] -= power
     if 0 <= r + 1 < len(matrix) and 0 <= c + 1 < len(matrix):
-        if m[r + 1][c + 1] > 0 :
+        if m[r + 1][c + 1] > 0:
             m[r + 1][c + 1] -= power
     return matrix
 
@@ -61,7 +62,7 @@ for row in range(size):
     value = [int(x) for x in input().split()]
     matrix.append(value)
 data = input()
-# bomb_row1, bomb_col1, bomb_row2, bomb_col2, bomb_row3, bomb_col3 = [int(x) for x in re.findall(r"\d", data)]
+
 bombs = deque([int(x) for x in re.findall(r"\d", data)])
 
 while bombs:
@@ -74,7 +75,6 @@ for row in range(len(matrix)):
     for col in range(len(matrix)):
         if matrix[row][col] > 0:
             alive_cell.append(matrix[row][col])
-
 
 print(f"Alive cells: {len(alive_cell)}")
 print(f"Sum: {sum(alive_cell)}")
