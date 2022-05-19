@@ -12,4 +12,3 @@ name = input()
 while name:
     print(snake_case(name))
     name = input()
-
