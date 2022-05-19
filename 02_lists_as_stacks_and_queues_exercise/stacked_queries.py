@@ -27,15 +27,15 @@ for _ in range(n):
     if command == 1:
         number = int(data[1])
         queries.append(number)
-    if command == 2:
-        if queries:
-            queries.pop()
-    if command == 3:
-        if queries:
-            print(max(queries))
-    if command == 4:
-        if queries:
-            print(min(queries))
+
+    if command == 2 and queries:
+        queries.pop()
+
+    if command == 3 and queries:
+        print(max(queries))
+
+    if command == 4 and queries:
+        print(min(queries))
 
 print(", ".join([str(x) for x in queries[::-1]]))
 

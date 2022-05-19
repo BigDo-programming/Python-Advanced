@@ -3,37 +3,61 @@ from io import StringIO
 
 input1 = """{[()]}"""
 input2 = """{[(])}"""
-input3 = """)))"""
+input3 = """)()"""
 
 # sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input2)
 sys.stdin = StringIO(input3)
 
-open_parentheses = []
-is_balanced = False
+parentheses_open = []
 parentheses = list(input())
-
+is_balanced = True
 for i in parentheses:
-    if i in "{" "(" '[':
-        open_parentheses.append(i)
 
-    elif len(open_parentheses) > 0:
-        if open_parentheses[-1] + i in "{}""[]""()":
-            open_parentheses.pop()
-            is_balanced = True
+    if i in "{[(":
+        parentheses_open.append(i)
 
-        else:
+    elif parentheses_open:
+        open_parentheses = parentheses_open.pop()
+
+        if not open_parentheses + i in "{},[],()":
             is_balanced = False
             break
-
     else:
         is_balanced = False
         break
 
-if is_balanced:
+
+if not parentheses_open and is_balanced:
     print("YES")
 else:
     print("NO")
+
+# open_parentheses = []
+# is_balanced = False
+# parentheses = list(input())
+#
+# for i in parentheses:
+#     if i in "{" "(" '[':
+#         open_parentheses.append(i)
+#
+#     elif len(open_parentheses) > 0:
+#         if open_parentheses[-1] + i in "{}""[]""()":
+#             open_parentheses.pop()
+#             is_balanced = True
+#
+#         else:
+#             is_balanced = False
+#             break
+#
+#     else:
+#         is_balanced = False
+#         break
+#
+# if is_balanced:
+#     print("YES")
+# else:
+#     print("NO")
 
 # balanced = True
 # parentheses = input()
