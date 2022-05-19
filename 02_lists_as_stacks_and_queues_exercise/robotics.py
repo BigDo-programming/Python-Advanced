@@ -48,20 +48,23 @@ while not command == "End":
 working = {}
 while product_line:
     product = product_line.popleft()
+    time_start +=1
     for robot, time, work in robots:
         if work == 0:
             working[time_start + 1] = [robot, product, time + time_start]
             robots[0][2] = 1
-            time_start += 1
+
             robots.rotate(-1)
 
-        elif time_start == robots[-1][1]:
-            robots[0][2] = 0
-            product_line.appendleft(product)
+        elif work == 1:
+            for name, time_end, work_mode in working.items():
+                if time_end == time_start:
+                    j[2] = 0
+            #         da go nawyrva s spisakyt na robota!!!
 
-        else:
-            time_start += 1
-            product_line.appendleft(product)
+            else:
+                # time_start += 1
+                product_line.appendleft(product)
 
 print(working)
 
