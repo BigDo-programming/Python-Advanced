@@ -18,31 +18,54 @@ sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input2)
 # sys.stdin = StringIO(input3)
 
-stacked_queries = []
+queries = []
 n = int(input())
+for _ in range(n):
+    data = input().split()
 
-for i in range(n):
-    data = input()
-    if data.startswith("1"):
-        data_split = data.split()
-        number_to_add = int(data_split[1])
-        stacked_queries.append(number_to_add)
+    command = int(data[0])
+    if command == 1:
+        number = int(data[1])
+        queries.append(number)
+    if command == 2:
+        if queries:
+            queries.pop()
+    if command == 3:
+        if queries:
+            print(max(queries))
+    if command == 4:
+        if queries:
+            print(min(queries))
 
-    elif data == "2":
-        if stacked_queries:
-            stacked_queries.pop()
-    elif data == "3":
-        if stacked_queries:
-            print(max(stacked_queries))
-    elif data == "4":
-        if stacked_queries:
-            print(min(stacked_queries))
+print(", ".join([str(x) for x in queries[::-1]]))
 
-stack_to_print = []
-while stacked_queries:
-    stack_to_print.append(str(stacked_queries.pop()))
-print(', '.join(stack_to_print))
 
+
+# stacked_queries = []
+# n = int(input())
+#
+# for i in range(n):
+#     data = input()
+#     if data.startswith("1"):
+#         data_split = data.split()
+#         number_to_add = int(data_split[1])
+#         stacked_queries.append(number_to_add)
+#
+#     elif data == "2":
+#         if stacked_queries:
+#             stacked_queries.pop()
+#     elif data == "3":
+#         if stacked_queries:
+#             print(max(stacked_queries))
+#     elif data == "4":
+#         if stacked_queries:
+#             print(min(stacked_queries))
+#
+# stack_to_print = []
+# while stacked_queries:
+#     stack_to_print.append(str(stacked_queries.pop()))
+# print(', '.join(stack_to_print))
+#
 
 # stack = []
 # n = int(input())
