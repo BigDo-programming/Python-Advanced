@@ -24,22 +24,53 @@ UgffRkOn
 fc1oZCE0
 END"""
 
-# sys.stdin = StringIO(input1)
-sys.stdin = StringIO(input2)
+sys.stdin = StringIO(input1)
+# sys.stdin = StringIO(input2)
+
+soft_uni_party = set()
 
 
 n = int(input())
-guess_list = {input() for _ in range(n)}
-is_coming = set()
-command = input()
-while not command == "END":
-    is_coming.add(command)
+for _ in range(n):
+    data = input()
+    soft_uni_party.add(data)
+
+while True:
     command = input()
+    if command == "END":
+        break
+    if command in soft_uni_party:
+        soft_uni_party.remove(command)
 
-print(len(guess_list.difference(is_coming)))
-for i in sorted(guess_list.difference(is_coming)):
-    print(i)
+print(len(soft_uni_party))
+[print(x) for x in sorted(soft_uni_party)]
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# n = int(input())
+# guess_list = {input() for _ in range(n)}
+# is_coming = set()
+# command = input()
+# while not command == "END":
+#     is_coming.add(command)
+#     command = input()
+#
+# print(len(guess_list.difference(is_coming)))
+# for i in sorted(guess_list.difference(is_coming)):
+#     print(i)
+#
 
 
 

@@ -18,9 +18,19 @@ sys.stdin = StringIO(input1)
 parking_lot = set()
 
 
+n = int(input())
+for _ in range(n):
+    car_data = input()
+    move, car = car_data.split(", ")
+    if move == "IN":
+        parking_lot.add(car)
+    else:
+        parking_lot.remove(car)
 
-
-
+if parking_lot:
+    [print(x) for x in parking_lot]
+else:
+    print("Parking Lot is Empty")
 
 
 
