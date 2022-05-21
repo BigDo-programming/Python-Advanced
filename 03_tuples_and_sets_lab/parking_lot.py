@@ -17,18 +17,35 @@ IN, CA2822UU"""
 sys.stdin = StringIO(input1)
 parking_lot = set()
 
-n = int(input())
-for i in range(n):
-    direction, number = input().split(", ")
-    if direction == "IN":
-        parking_lot.add(number)
-    else:
-        parking_lot.remove(number)
-if parking_lot:
-    for i in parking_lot:
-        print(i)
-else:
-    print("Parking Lot is Empty")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# n = int(input())
+# for i in range(n):
+#     direction, number = input().split(", ")
+#     if direction == "IN":
+#         parking_lot.add(number)
+#     else:
+#         parking_lot.remove(number)
+# if parking_lot:
+#     for i in parking_lot:
+#         print(i)
+# else:
+#     print("Parking Lot is Empty")
 
 
 # n = int(input())
