@@ -11,35 +11,65 @@ input1 = """5
 input2 = """3
 0,3-1,2
 2,10-3,5
-6,15-3,10"""
+6,15-3,10
+"""
 
-# sys.stdin = StringIO(input1)
-sys.stdin = StringIO(input2)
+input3 = """1
+0,3-1,2"""
+# 2,10-3,5
+# 6,15-3,10
+
+sys.stdin = StringIO(input1)
+# sys.stdin = StringIO(input2)
+# sys.stdin = StringIO(input3)
+
+n = int(input())
+
 
 longest_intersection = {}
-set1 = set()
-set2 = set()
-n = int(input())
-for i in range(n):
+for _ in range(n):
+    intersection = (input().split("-"))
 
-    first_one, second_one = input().split("-")
-    first_start, first_end = [int(x) for x in first_one.split(",")]
-    second_start, second_end = [int(x) for x in second_one.split(",")]
+    start1, end1 = [int(x) for x in intersection[0].split(",")]
+    set1 = {x for x in range(start1, end1 + 1)}
+    start2, end2 = [int(x) for x in intersection[1].split(",")]
+    set2 = {x for x in range(start2, end2 + 1)}
 
-    for f in range(first_start, first_end + 1):
-        set1.add(f)
+    set3 = set1.intersection(set2)
 
-    for s in range(second_start, second_end + 1):
-        set2.add(s)
-    list_intersection = list(set1.intersection(set2))
+    longest_intersection[len(set3)] = set3.copy()
 
-    longest_intersection[len(list_intersection)] = list_intersection
     set1.clear()
     set2.clear()
+    set3.clear()
 
-print(
-    f"Longest intersection is [{', '.join([str(x) for x in longest_intersection[max(longest_intersection)]])}] with length {max(longest_intersection)}")
 
+print(f"Longest intersection is {[x for x in longest_intersection[max(longest_intersection)]]} with length {max(longest_intersection)}")
+
+# longest_intersection = {}
+# set1 = set()
+# set2 = set()
+# n = int(input())
+# for i in range(n):
+#
+#     first_one, second_one = input().split("-")
+#     first_start, first_end = [int(x) for x in first_one.split(",")]
+#     second_start, second_end = [int(x) for x in second_one.split(",")]
+#
+#     for f in range(first_start, first_end + 1):
+#         set1.add(f)
+#
+#     for s in range(second_start, second_end + 1):
+#         set2.add(s)
+#     list_intersection = list(set1.intersection(set2))
+#
+#     longest_intersection[len(list_intersection)] = list_intersection
+#     set1.clear()
+#     set2.clear()
+#
+# print(
+#     f"Longest intersection is [{', '.join([str(x) for x in longest_intersection[max(longest_intersection)]])}] with length {max(longest_intersection)}")
+#
 
 
 # def intersection_set(dict, first_part, second_part):

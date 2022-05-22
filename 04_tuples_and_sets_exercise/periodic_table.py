@@ -7,21 +7,23 @@ Mo O Ce
 Ee
 Mo"""
 
-
 input2 = """3
 Ge Ch O Ne
 Nb Mo Tc
 O Ne"""
 
-# sys.stdin = StringIO(input1)
-sys.stdin = StringIO(input2)
+sys.stdin = StringIO(input1)
+# sys.stdin = StringIO(input2)
 
-set1 = set()
+
+periodic_table = set()
 
 n = int(input())
-for i in range(n):
-    [set1.add(x) for x in input().split()]
-[print(x) for x in set1]
+for _ in range(n):
+    data = set(input().split())
+    periodic_table = periodic_table.union(data)
+
+{print(x) for x in periodic_table}
 
 
 # unique_elements = set()
