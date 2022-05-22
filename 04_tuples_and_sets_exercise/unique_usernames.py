@@ -11,13 +11,20 @@ NiceGuy1234"""
 
 sys.stdin = StringIO(input1)
 
-n = int(input())
-names = set()
-for i in range(n):
-    names.add(input())
-[print(x) for x in names]
+valid_username = set()
+for i in range(int(input())):
+    valid_username.add(input())
 
-# Todo Do tuk sym!!!
+[print(x) for x in valid_username]
+
+
+# n = int(input())
+# names = set()
+# for i in range(n):
+#     names.add(input())
+# [print(x) for x in names]
+
+
 
 # unique_usernames = set()
 # n = int(input())
