@@ -46,36 +46,11 @@ while True:
             if not bee == 0 and not nectar_pop == 0:
                 honey += abs(bee / nectar_pop)
 
-
 print(f"Total honey made: {honey}")
 if working_bees:
     print(f"Bees left: {', '.join([str(x) for x in working_bees])}")
 if nectar:
     print(f"Nectar left: {', '.join([str(x) for x in nectar])}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # symbols = {
 #     "+": lambda a, b: a + b,
@@ -104,7 +79,6 @@ if nectar:
 #     print(f"Bees left: {', '.join([str(x) for x in working_bees])}")
 # if nectar:
 #     print(f"Nectar left: {', '.join([str(x) for x in nectar])}")
-
 
 
 # from collections import deque
