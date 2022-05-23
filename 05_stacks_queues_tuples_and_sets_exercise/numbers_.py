@@ -17,35 +17,75 @@ Add Second 1 2 3 3 3
 Check Subset
 Remove Second 1 2 3 4 5"""
 
-sys.stdin = StringIO(input1)
+input3 = """5 4 2 9 9 5 4
+1 1 1 5 6 5 7 7 8 9 
+4
+Add First 5 6 9 3
+Add Second 1 2 3 3 3
+Check Subset
+Remove Second 1 2 3 4 5 8 9"""
+
+# sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input2)
+sys.stdin = StringIO(input3)
 
-first_numbers = set({int(x) for x in input().split()})
-second_numbers = set({int(x) for x in input().split()})
-
+first = {int(x) for x in input().split()}
+second = {int(x) for x in input().split()}
 n = int(input())
-for _ in range(n):
+for i in range(n):
     data = input().split()
-    command = " ".join(data[:2])
-    if command == "Add First":
-        first_numbers.update({int(x) for x in data[2:]})
-        # [first_numbers.add(int(x)) for x in data[2:]]
+    numbers = {int(x) for x in data[2:]}
 
-    elif command == "Add Second":
-        second_numbers.update({int(x) for x in data[2:]})
-        # [second_numbers.add(int(x)) for x in data[2:]]
+    if data[0] == "Add":
+        if data[1] == "First":
+            first.update(numbers)
 
-    elif command == "Remove First":
-        first_numbers.difference_update({int(x) for x in data[2:]})
+        else:
+            second.update(numbers)
 
-    elif command == "Remove Second":
-        second_numbers.difference_update({int(x) for x in data[2:]})
+    elif data[0] == "Remove":
+        if data[1] == "First":
+            first.difference_update(numbers)
+            # {first.remove(x) for x in numbers if x in first}
 
-    elif command == "Check Subset":
-        print(first_numbers.issubset(second_numbers) or second_numbers.issubset(first_numbers))
+        else:
+            second.difference_update(numbers)
+            # {second.remove(x) for x in numbers if x in second}
 
-print(', '.join([str(x) for x in sorted(first_numbers)]))
-print(', '.join([str(x) for x in sorted(second_numbers)]))
+    else:
+        print(first.issubset(second) or second.issubset(first))
+
+print(*[x for x in sorted(first)],sep=", ")
+print(*[x for x in sorted(second)],sep=", ")
+
+
+#
+# first_numbers = set({int(x) for x in input().split()})
+# second_numbers = set({int(x) for x in input().split()})
+#
+# n = int(input())
+# for _ in range(n):
+#     data = input().split()
+#     command = " ".join(data[:2])
+#     if command == "Add First":
+#         first_numbers.update({int(x) for x in data[2:]})
+#         # [first_numbers.add(int(x)) for x in data[2:]]
+#
+#     elif command == "Add Second":
+#         second_numbers.update({int(x) for x in data[2:]})
+#         # [second_numbers.add(int(x)) for x in data[2:]]
+#
+#     elif command == "Remove First":
+#         first_numbers.difference_update({int(x) for x in data[2:]})
+#
+#     elif command == "Remove Second":
+#         second_numbers.difference_update({int(x) for x in data[2:]})
+#
+#     elif command == "Check Subset":
+#         print(first_numbers.issubset(second_numbers) or second_numbers.issubset(first_numbers))
+#
+# print(', '.join([str(x) for x in sorted(first_numbers)]))
+# print(', '.join([str(x) for x in sorted(second_numbers)]))
 
 # numbers_1 = set({int(x) for x in input().split()})
 # numbers_2 = set({int(x) for x in input().split()})
