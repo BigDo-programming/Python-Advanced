@@ -7,9 +7,9 @@ input2 = """r ue nge ora bl ed"""
 
 input3 = """re ple blu pop e pur d"""
 
-# sys.stdin = StringIO(input1)
+sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input2)
-sys.stdin = StringIO(input3)
+# sys.stdin = StringIO(input3)
 
 from collections import deque
 
@@ -19,12 +19,10 @@ needed_colors = {
     "green": ["yellow", "blue"]
 }
 
-colors = ["red", "yellow", "blue", "orange", "purple", "green"]
-
 main = ["red", "yellow", "blue"]
-main_colors = []
 secondary = ["orange", "purple", "green"]
-secondary_colors = []
+
+
 original_list = []
 
 string = deque(input().split())
@@ -33,58 +31,35 @@ while string:
     first = string.popleft()
     last = string.pop() if string else ""
 
-    if first + last in colors:
+    if first + last in main or first + last in secondary:
         original_list.append(first + last)
+        continue
 
-        if first + last in main:
-            main_colors.append(first + last)
-
-        else:
-            secondary_colors.append(first + last)
-
-    elif last + first in colors:
+    if last + first in main or last + first in secondary:
         original_list.append(last + first)
+        continue
 
-        if last + first in main:
-            main_colors.append(last + first)
-        else:
-            secondary_colors.append(last + first)
+    first = first[:-1]
+    last = last[:-1]
 
+    if first:
+        string.insert(len(string)//2, first)
+    if last:
+        string.insert(len(string)//2, last)
+
+
+result = []
+for color in original_list:
+    if color not in secondary:
+        result.append(color)
     else:
-        middle = len(string) // 2
-        if len(string) == 0:
-            break
 
-        string.insert(middle, first[:-1] + last[: -1])
-
-
-    # elif len(string) == 1:
-    #     first = string.pop()
-    #
-    #     if first in colors:
-    #         original_list.append(first)
-    #
-    #         if first in main:
-    #             main_colors.append(first)
-    #         else:
-    #             secondary_colors.append(first)
-
-for i in secondary_colors:
-    one, two = [x for x in needed_colors[i]]
-    if one not in main_colors or two not in main_colors or one not in main_colors and two not in main_colors:
-        original_list.remove(i)
-
-print(original_list)
-
-# ToDo 60/100
+        color1,color2 = [x for x in needed_colors[color]]
+        if color1 in original_list and color2 in original_list:
+            result.append(color)
 
 
-
-
-
-
-
-
+print(result)
 
 
 
