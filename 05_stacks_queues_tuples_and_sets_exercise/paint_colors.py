@@ -8,8 +8,8 @@ input2 = """r ue nge ora bl ed"""
 input3 = """re ple blu pop e pur d"""
 
 # sys.stdin = StringIO(input1)
-sys.stdin = StringIO(input2)
-# sys.stdin = StringIO(input3)
+# sys.stdin = StringIO(input2)
+sys.stdin = StringIO(input3)
 
 from collections import deque
 
@@ -30,42 +30,44 @@ original_list = []
 string = deque(input().split())
 while string:
 
-    if len(string) > 1:
-        first = string.popleft()
-        last = string.pop()
+    first = string.popleft()
+    last = string.pop() if string else ""
 
-        if first + last in colors:
-            original_list.append(first + last)
-            if first + last in main:
-                main_colors.append(first + last)
+    if first + last in colors:
+        original_list.append(first + last)
 
-            else:
-                secondary_colors.append(first + last)
-
-
-
-        elif last + first in colors:
-            original_list.append(last + first)
-
-            if last + first in main:
-                main_colors.append(last + first)
-            else:
-                secondary_colors.append(last + first)
+        if first + last in main:
+            main_colors.append(first + last)
 
         else:
-            middle = len(string) // 2
-            string.insert(middle, first[:-1] + last[: -1])
+            secondary_colors.append(first + last)
 
-    elif len(string) == 1:
-        first = string.pop()
+    elif last + first in colors:
+        original_list.append(last + first)
 
-        if first in colors:
-            original_list.append(first)
+        if last + first in main:
+            main_colors.append(last + first)
+        else:
+            secondary_colors.append(last + first)
 
-            if first in main:
-                main_colors.append(first)
-            else:
-                secondary_colors.append(first)
+    else:
+        middle = len(string) // 2
+        if len(string) == 0:
+            break
+
+        string.insert(middle, first[:-1] + last[: -1])
+
+
+    # elif len(string) == 1:
+    #     first = string.pop()
+    #
+    #     if first in colors:
+    #         original_list.append(first)
+    #
+    #         if first in main:
+    #             main_colors.append(first)
+    #         else:
+    #             secondary_colors.append(first)
 
 for i in secondary_colors:
     one, two = [x for x in needed_colors[i]]
