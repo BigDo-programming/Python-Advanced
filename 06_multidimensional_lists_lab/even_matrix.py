@@ -9,6 +9,27 @@ input1 = """4
 
 sys.stdin = StringIO(input1)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # def read_matrix():
 #     n = int(input())
 #
@@ -28,11 +49,11 @@ sys.stdin = StringIO(input1)
 #     even_matrix.append(only_even)
 # print(even_matrix)
 
-matrix = []
-n = int(input())
-for i in range(n):
-    row = map(int, input().split(', '))
-    even_row = [x for x in row if x % 2 == 0]
-    matrix.append(even_row)
-
-print(matrix)
+# matrix = []
+# n = int(input())
+# for i in range(n):
+#     row = map(int, input().split(', '))
+#     even_row = [x for x in row if x % 2 == 0]
+#     matrix.append(even_row)
+#
+# print(matrix)

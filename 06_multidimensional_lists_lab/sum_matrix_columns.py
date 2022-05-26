@@ -9,6 +9,38 @@ input1 = """3, 6
 
 sys.stdin = StringIO(input1)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # def read_matrix():
 #     n,m = [int(x) for x in input().split(', ') ]
 #     # n,m = map(int, input().split(', ')
@@ -66,16 +98,16 @@ sys.stdin = StringIO(input1)
 #     print(sum_matrix_columns)
 #
 
-n, m = [int(x) for x in input().split(", ")]
-
-matrix = []
-for i in range(n):
-    row = [int(x) for x in input().split()]
-    matrix.append(row)
-
-col_sum = 0
-for c in range(m):
-    for r in range(n):
-        col_sum += matrix[r][c]
-    print(col_sum)
-    col_sum = 0
+# n, m = [int(x) for x in input().split(", ")]
+#
+# matrix = []
+# for i in range(n):
+#     row = [int(x) for x in input().split()]
+#     matrix.append(row)
+#
+# col_sum = 0
+# for c in range(m):
+#     for r in range(n):
+#         col_sum += matrix[r][c]
+#     print(col_sum)
+#     col_sum = 0

@@ -14,6 +14,35 @@ sys.stdin = StringIO(input2)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # def read_matrix():
 #     n = int(input())
 #
@@ -27,12 +56,12 @@ sys.stdin = StringIO(input2)
 #
 # matrix = read_matrix()
 
-
-matrix = []
-n = int(input())
-for i in range(n):
-    row = [int(x) for x in input().split(', ')]
-    matrix.append(row)
+#
+# matrix = []
+# n = int(input())
+# for i in range(n):
+#     row = [int(x) for x in input().split(', ')]
+#     matrix.append(row)
 
 # flattening_matrix = []
 # for i in matrix:
@@ -41,7 +70,7 @@ for i in range(n):
 # print(flattening_matrix)
 
 
-print(
-    [x for row in matrix
-     for x in row]
-)
+# print(
+#     [x for row in matrix
+#      for x in row]
+# )

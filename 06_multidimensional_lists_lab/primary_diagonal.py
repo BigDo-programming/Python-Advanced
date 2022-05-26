@@ -8,6 +8,34 @@ input1 = """3
 
 sys.stdin = StringIO(input1)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # def read_matrix():
 #     n = int(input())
 #
@@ -25,11 +53,11 @@ sys.stdin = StringIO(input1)
 # print(sum(matrix[i][i] for i in range(n)))
 
 
-n = int(input())
-matrix = []
-for i in range(n):
-    value = [int(x) for x in input().split()]
-    matrix.append(value)
+# n = int(input())
+# matrix = []
+# for i in range(n):
+#     value = [int(x) for x in input().split()]
+#     matrix.append(value)
 
 # primary_diagonal_sum = 0
 # for i in range(n):
@@ -37,4 +65,4 @@ for i in range(n):
 #
 # print(primary_diagonal_sum)
 
-print(sum([matrix[i][i] for i in range(n)]))
+# print(sum([matrix[i][i] for i in range(n)]))

@@ -8,6 +8,30 @@ input1 = """3, 6
 
 sys.stdin = StringIO(input1)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # def read_matrix():
 #     n, m = [int(x) for x in input().split(', ')]
 #     # n,m = map(int, input().split(', ')
@@ -38,16 +62,16 @@ sys.stdin = StringIO(input1)
 # print(matrix)
 
 
-n, m = map(int, input().split(', '))
-# n, m = [int(x) for x in input().split(', ')]
-
-row_sum = 0
-matrix = []
-for _ in range(n):
-    row = [int(x) for x in input().split(', ')]
-    row_sum += sum(row)
-
-    matrix.append(row)
-
-print(row_sum)
-print(matrix)
+# n, m = map(int, input().split(', '))
+# # n, m = [int(x) for x in input().split(', ')]
+#
+# row_sum = 0
+# matrix = []
+# for _ in range(n):
+#     row = [int(x) for x in input().split(', ')]
+#     row_sum += sum(row)
+#
+#     matrix.append(row)
+#
+# print(row_sum)
+# print(matrix)
