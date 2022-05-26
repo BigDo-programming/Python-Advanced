@@ -12,36 +12,14 @@ input2 = """3
 # sys.stdin = StringIO(input1)
 sys.stdin = StringIO(input2)
 
+matrix = []
 
+n = int(input())
+for i in range(n):
+    for j in input().split(", "):
+        matrix.append(int(j))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(matrix)
 
 # def read_matrix():
 #     n = int(input())
@@ -56,7 +34,7 @@ sys.stdin = StringIO(input2)
 #
 # matrix = read_matrix()
 
-#
+
 # matrix = []
 # n = int(input())
 # for i in range(n):

@@ -7,30 +7,16 @@ input1 = """3, 6
 4, 6, 7, 9, 1, 0"""
 
 sys.stdin = StringIO(input1)
+matrix = []
+matrix_sum = 0
+n, m = [int(x) for x in input().split(", ")]
+for _ in range(n):
+    value = [int(x) for x in input().split(", ")]
+    matrix_sum += sum(value)
+    matrix.append(value)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(matrix_sum)
+print(matrix)
 
 # def read_matrix():
 #     n, m = [int(x) for x in input().split(', ')]

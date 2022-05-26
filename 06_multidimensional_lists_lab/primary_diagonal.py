@@ -8,33 +8,18 @@ input1 = """3
 
 sys.stdin = StringIO(input1)
 
+matrix = []
 
+n = int(input())
+for row_index in range(n):
+    value = [int(x) for x in input().split()]
+    matrix.append(value)
 
+primary_sum = 0
+for i in range(n):
+    primary_sum += matrix[i][i]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(primary_sum)
 
 # def read_matrix():
 #     n = int(input())

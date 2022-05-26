@@ -8,7 +8,13 @@ input1 = """3, 6
 
 sys.stdin = StringIO(input1)
 
+matrix = []
 
+n = int(input())
+
+for row_index in range(n):
+    value = list(input())
+    matrix.append(value)
 
 
 

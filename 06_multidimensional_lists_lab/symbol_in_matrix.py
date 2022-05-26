@@ -5,29 +5,32 @@ input1 = """3
 ABC
 DEF
 X!@
-!"""
+?"""
 
 sys.stdin = StringIO(input1)
 
+matrix = []
+
+n = int(input())
+
+for row_index in range(n):
+    value = list(input())
+    matrix.append(value)
 
 
+symbol = input()
+is_found = False
+for row_index in range(n):
+    if is_found:
+        break
+    for col_index in range(n):
+        if matrix[row_index][col_index] == symbol:
+            is_found = True
+            print((row_index, col_index))
+            break
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if not is_found:
+    print(f"{symbol} does not occur in the matrix")
 
 
 
