@@ -19,38 +19,70 @@ END"""
 sys.stdin = StringIO(input1)
 
 
-def is_valid(r, c, row, col):
-    return 0 <= row < r and 0 <= col < c
 
 
-def make_matrix():
-    new_matrix = []
-    n, m = [int(x) for x in input().split()]
-    for _ in range(n):
-        value = [x for x in input().split()]
-        new_matrix.append(value)
-    return new_matrix
 
 
-matrix = make_matrix()
 
-command = input()
-while not command == "END":
-    command_split = command.split()
-    if not command_split[0] == 'swap' or not len(command_split[1:]) == 4:
-        print("Invalid input!")
 
-    else:
-        row1, col1, row2, col2 = [int(x) for x in command_split[1:]]
-        if is_valid(len(matrix), len(matrix[0]), row1, col1) and is_valid(len(matrix), len(matrix[0]), row2, col2):
-            matrix[row1][col1], matrix[row2][col2] = matrix[row2][col2], matrix[row1][col1]
-            for row in matrix:
-                [print(x, end=" ") for x in row]
-                print()
-        else:
-            print("Invalid input!")
 
-    command = input()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def is_valid(r, c, row, col):
+#     return 0 <= row < r and 0 <= col < c
+#
+#
+# def make_matrix():
+#     new_matrix = []
+#     n, m = [int(x) for x in input().split()]
+#     for _ in range(n):
+#         value = [x for x in input().split()]
+#         new_matrix.append(value)
+#     return new_matrix
+#
+#
+# matrix = make_matrix()
+#
+# command = input()
+# while not command == "END":
+#     command_split = command.split()
+#     if not command_split[0] == 'swap' or not len(command_split[1:]) == 4:
+#         print("Invalid input!")
+#
+#     else:
+#         row1, col1, row2, col2 = [int(x) for x in command_split[1:]]
+#         if is_valid(len(matrix), len(matrix[0]), row1, col1) and is_valid(len(matrix), len(matrix[0]), row2, col2):
+#             matrix[row1][col1], matrix[row2][col2] = matrix[row2][col2], matrix[row1][col1]
+#             for row in matrix:
+#                 [print(x, end=" ") for x in row]
+#                 print()
+#         else:
+#             print("Invalid input!")
+#
+#     command = input()
 
 # def is_valid(r, c, rows, cols):
 #     return 0 <= r < rows or 0 <= r < cols

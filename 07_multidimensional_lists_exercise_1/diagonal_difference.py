@@ -10,24 +10,56 @@ input1 = """4
 sys.stdin = StringIO(input1)
 
 
-def make_matrix():
-    new_matrix = []
-    n = int(input())
-    for _ in range(n):
-        value = [int(x) for x in input().split()]
-        new_matrix.append(value)
-    return new_matrix
 
 
-matrix = make_matrix()
-primary_diagonal = 0
-secondary_diagonal = 0
 
-for i in range(len(matrix)):
-    primary_diagonal += matrix[i][i]
-    secondary_diagonal += matrix[i][len(matrix) - 1 - i]
 
-print(abs(primary_diagonal-secondary_diagonal))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def make_matrix():
+#     new_matrix = []
+#     n = int(input())
+#     for _ in range(n):
+#         value = [int(x) for x in input().split()]
+#         new_matrix.append(value)
+#     return new_matrix
+#
+#
+# matrix = make_matrix()
+# primary_diagonal = 0
+# secondary_diagonal = 0
+#
+# for i in range(len(matrix)):
+#     primary_diagonal += matrix[i][i]
+#     secondary_diagonal += matrix[i][len(matrix) - 1 - i]
+#
+# print(abs(primary_diagonal-secondary_diagonal))
 
 
 

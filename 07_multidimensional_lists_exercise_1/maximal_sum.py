@@ -10,33 +10,68 @@ input1 = """4 5
 sys.stdin = StringIO(input1)
 
 import sys
-def make_matrix():
-    new_matrix = []
-    n, m = [int(x) for x in input().split()]
-    for _ in range(n):
-        value = [int(x) for x in input().split()]
-        new_matrix.append(value)
-    return new_matrix
 
 
-matrix = make_matrix()
-max_sum = -sys.maxsize
-start_r = 0
-start_c = 0
-for r in range(len(matrix) - 2):
-    for c in range(len(matrix[0]) - 2):
-        current_sum = matrix[r][c] + matrix[r + 1][c] + matrix[r + 2][c]\
-                      + matrix[r][c + 1] + matrix[r + 1][c + 1] + matrix[r + 2][c + 1] \
-                      + matrix[r][c + 2] + matrix[r + 1][c + 2] + matrix[r + 2][c + 2]
-        if current_sum > max_sum:
-            max_sum = current_sum
-            start_r = r
-            start_c = c
 
-print(f"Sum = {max_sum}")
-print(f'{matrix[start_r][start_c]} {matrix[start_r][start_c + 1]} {matrix[start_r][start_c + 2]}')
-print(f'{matrix[start_r + 1][start_c]} {matrix[start_r + 1][start_c + 1]} {matrix[start_r + 1][start_c + 2]}')
-print(f"{matrix[start_r + 2][start_c]} {matrix[start_r + 2][start_c + 1]} {matrix[start_r + 2][start_c + 2]}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def make_matrix():
+#     new_matrix = []
+#     n, m = [int(x) for x in input().split()]
+#     for _ in range(n):
+#         value = [int(x) for x in input().split()]
+#         new_matrix.append(value)
+#     return new_matrix
+#
+#
+# matrix = make_matrix()
+# max_sum = -sys.maxsize
+# start_r = 0
+# start_c = 0
+# for r in range(len(matrix) - 2):
+#     for c in range(len(matrix[0]) - 2):
+#         current_sum = matrix[r][c] + matrix[r + 1][c] + matrix[r + 2][c]\
+#                       + matrix[r][c + 1] + matrix[r + 1][c + 1] + matrix[r + 2][c + 1] \
+#                       + matrix[r][c + 2] + matrix[r + 1][c + 2] + matrix[r + 2][c + 2]
+#         if current_sum > max_sum:
+#             max_sum = current_sum
+#             start_r = r
+#             start_c = c
+#
+# print(f"Sum = {max_sum}")
+# print(f'{matrix[start_r][start_c]} {matrix[start_r][start_c + 1]} {matrix[start_r][start_c + 2]}')
+# print(f'{matrix[start_r + 1][start_c]} {matrix[start_r + 1][start_c + 1]} {matrix[start_r + 1][start_c + 2]}')
+# print(f"{matrix[start_r + 2][start_c]} {matrix[start_r + 2][start_c + 1]} {matrix[start_r + 2][start_c + 2]}")
 
 # matrix = []
 # n, m = [int(x) for x in input().split()]

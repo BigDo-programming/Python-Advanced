@@ -10,28 +10,30 @@ sys.stdin = StringIO(input1)
 
 matrix = []
 
-n = int(input())
+n, m = [int(x) for x in input().split(", ")]
 
 for row_index in range(n):
-    value = list(input())
+    value = [int(x) for x in input().split(", ")]
     matrix.append(value)
 
+max_matrix_square = 0
+matrix_square_sum = 0
+matrix_row = 0
+matrix_col = 0
+for row_index in range(n - 1):
+
+    for col_index in range(m - 1):
+        matrix_square_sum += matrix[row_index][col_index] + matrix[row_index][col_index + 1] + matrix[row_index + 1][col_index] + matrix[row_index + 1][col_index + 1]
+        if matrix_square_sum > max_matrix_square:
+            max_matrix_square = matrix_square_sum
+            matrix_row = row_index
+            matrix_col = col_index
+        matrix_square_sum = 0
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(matrix[matrix_row][matrix_col],  matrix[matrix_row][matrix_col + 1])
+print(matrix[matrix_row + 1][matrix_col], matrix[matrix_row + 1][matrix_col + 1])
+print(max_matrix_square)
 
 
 

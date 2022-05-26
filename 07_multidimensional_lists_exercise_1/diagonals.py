@@ -9,25 +9,52 @@ input1 = """3
 sys.stdin = StringIO(input1)
 
 
-def make_matrix():
-    new_matrix = []
-    n = int(input())
-    for _ in range(n):
-        value = [int(x) for x in input().split(", ")]
-        new_matrix.append(value)
-    return new_matrix
 
 
-matrix = make_matrix()
-primary_diagonal = []
-secondary_diagonal = []
 
-for i in range(len(matrix)):
-    primary_diagonal.append(matrix[i][i])
-    secondary_diagonal.append(matrix[i][len(matrix) - 1 - i])
 
-print(f"Primary diagonal: {', '.join([str(x) for x in primary_diagonal])}. Sum: {sum(primary_diagonal)}")
-print(f"Secondary diagonal: {', '.join([str(x) for x in secondary_diagonal])}. Sum: {sum(secondary_diagonal)}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+# def make_matrix():
+#     new_matrix = []
+#     n = int(input())
+#     for _ in range(n):
+#         value = [int(x) for x in input().split(", ")]
+#         new_matrix.append(value)
+#     return new_matrix
+#
+#
+# matrix = make_matrix()
+# primary_diagonal = []
+# secondary_diagonal = []
+#
+# for i in range(len(matrix)):
+#     primary_diagonal.append(matrix[i][i])
+#     secondary_diagonal.append(matrix[i][len(matrix) - 1 - i])
+#
+# print(f"Primary diagonal: {', '.join([str(x) for x in primary_diagonal])}. Sum: {sum(primary_diagonal)}")
+# print(f"Secondary diagonal: {', '.join([str(x) for x in secondary_diagonal])}. Sum: {sum(secondary_diagonal)}")
 
 # matrix = []
 # primary_diagonal = []
