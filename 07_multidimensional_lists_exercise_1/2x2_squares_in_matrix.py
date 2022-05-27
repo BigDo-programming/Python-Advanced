@@ -1,43 +1,36 @@
 import sys
 from io import StringIO
+from pprint import pprint
 
 input1 = """3 4
 A B B D
 E B B B
 I J B B"""
 
-sys.stdin = StringIO(input1)
+input2 = """5 4
+A A B D
+A A B B
+I J B B
+C C C G
+C C K P"""
 
+# sys.stdin = StringIO(input1)
+sys.stdin = StringIO(input2)
 
+matrix = []
+count = 0
+n, m = [int(x) for x in input().split()]
+for i in range(n):
+    value = input().split()
+    matrix.append(value)
 
+for row_index in range(n - 1):
+    for col_index in range(m - 1):
+        if matrix[row_index][col_index] == matrix[row_index][col_index + 1] == \
+                matrix[row_index + 1][col_index] == matrix[row_index + 1][col_index + 1]:
+            count += 1
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(count)
 
 # def make_matrix():
 #     new_matrix = []

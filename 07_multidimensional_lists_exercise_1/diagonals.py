@@ -8,37 +8,18 @@ input1 = """3
 
 sys.stdin = StringIO(input1)
 
+matrix = []
+primary_diagonal = []
+secondary_diagonal = []
+n = int(input())
+for i in range(n):
+    value = [int(x) for x in input().split(", ")]
+    matrix.append(value)
+    primary_diagonal.append(matrix[i][i])
+    secondary_diagonal.append(matrix[i][n - i - 1])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(f"Primary diagonal: {', '.join([str(x) for x in primary_diagonal])}. Sum: {sum(primary_diagonal)}")
+print(f"Secondary diagonal: {', '.join([str(x) for x in secondary_diagonal])}. Sum: {sum(secondary_diagonal)}")
 
 # def make_matrix():
 #     new_matrix = []

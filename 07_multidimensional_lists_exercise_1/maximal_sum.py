@@ -7,43 +7,47 @@ input1 = """4 5
 3 7 11 2 8
 4 8 12 16 4"""
 
-sys.stdin = StringIO(input1)
+input2 = """5 6
+1 0 4 3 1 1
+1 3 1 3 0 4
+6 4 1 2 5 6
+2 2 1 5 4 1
+3 3 3 6 0 5"""
+
+# sys.stdin = StringIO(input1)
+sys.stdin = StringIO(input2)
 
 import sys
 
+matrix = []
+max_sum = -sys.maxsize
+max_row_index = 0
+max_col_index = 0
+n, m = [int(x) for x in input().split()]
+for i in range(n):
+    value = [int(x) for x in input().split()]
+    matrix.append(value)
 
+for row_index in range(n - 2):
+    for col_index in range(m - 2):
+        matrix_sum = matrix[row_index][col_index] + matrix[row_index][col_index + 1] + matrix[row_index][
+            col_index + 2] + matrix[row_index + 1][col_index] + matrix[row_index + 1][col_index + 1] + \
+                     matrix[row_index + 1][col_index + 2] + matrix[row_index + 2][col_index] + matrix[row_index + 2][
+                         col_index + 1] + matrix[row_index + 2][col_index + 2]
 
+        if matrix_sum > max_sum:
+            max_sum = matrix_sum
+            max_row_index = row_index
+            max_col_index = col_index
+        matrix_sum = 0
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(f"Sum = {max_sum}")
+print(matrix[max_row_index][max_col_index], matrix[max_row_index][max_col_index + 1],
+      matrix[max_row_index][max_col_index + 2])
+print(matrix[max_row_index + 1][max_col_index], matrix[max_row_index + 1][max_col_index + 1],
+      matrix[max_row_index + 1][max_col_index + 2])
+print(matrix[max_row_index + 2][max_col_index], matrix[max_row_index + 2][max_col_index + 1],
+      matrix[max_row_index + 2][max_col_index + 2])
 
 # def make_matrix():
 #     new_matrix = []
