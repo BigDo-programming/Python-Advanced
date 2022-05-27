@@ -15,41 +15,86 @@ input2 = """3
 6 4 9
 0,2 1,0 2,2"""
 
+input3 = """3
+7 8 0
+3 1 5
+6 4 9
+0,2 1,0 2,2"""
+
 # sys.stdin = StringIO(input1)
-sys.stdin = StringIO(input2)
+# sys.stdin = StringIO(input2)
+sys.stdin = StringIO(input3)
 
 import re
 from collections import deque
+import sys
 
 
+def is_valid(matrix, row, column):
+
+    if matrix[row][column] > 0:
+
+        power = matrix[row][column]
+        matrix[row][column] = 0
+
+        if 0 <= row - 1 < len(matrix) and 0 <= column - 1 < len(matrix):
+            if matrix[row - 1][column - 1] > 0:
+                matrix[row - 1][column - 1] -= power
+
+        if 0 <= row - 1 < len(matrix) and 0 <= column < len(matrix):
+            if matrix[row - 1][column] > 0:
+                matrix[row - 1][column] -= power
+
+        if 0 <= row - 1 < len(matrix) and 0 <= column + 1 < len(matrix):
+            if matrix[row - 1][column + 1] > 0:
+                matrix[row - 1][column + 1] -= power
+
+        if 0 <= row < len(matrix) and 0 <= column - 1 < len(matrix):
+            if matrix[row][column - 1] > 0:
+                matrix[row][column - 1] -= power
+
+        if 0 <= row < len(matrix) and 0 <= column + 1 < len(matrix):
+            if matrix[row][column + 1] > 0:
+                matrix[row][column + 1] -= power
+
+        if 0 <= row + 1 < len(matrix) and 0 <= column - 1 < len(matrix):
+            if matrix[row + 1][column - 1] > 0:
+                matrix[row + 1][column - 1] -= power
+
+        if 0 <= row + 1 < len(matrix) and 0 <= column < len(matrix):
+            if matrix[row + 1][column] > 0:
+                matrix[row + 1][column] -= power
+
+        if 0 <= row + 1 < len(matrix) and 0 <= column + 1 < len(matrix):
+            if matrix[row + 1][column + 1] > 0:
+                matrix[row + 1][column + 1] -= power
+
+    return matrix
 
 
+n = int(input())
+matrix = []
+for i in range(n):
+    value = [int(x) for x in input().split()]
+    matrix.append(value)
+coordinates = input()
+bombs = deque([int(x) for x in re.findall(r"\d", coordinates)])
 
+while bombs:
+    row = bombs.popleft()
+    column = bombs.popleft()
+    matrix = is_valid(matrix, row, column)
+alive_cell = []
+for ch in matrix:
+    for k in ch:
+        if k > 0:
+            alive_cell.append(k)
 
+print(f"Alive cells: {len(alive_cell)}")
+print(f"Sum: {sum(alive_cell)}")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+for ch in matrix:
+    print(*ch)
 
 
 
@@ -110,5 +155,3 @@ from collections import deque
 # print(f"Alive cells: {len(alive_cell)}")
 # print(f"Sum: {sum(alive_cell)}")
 # [print(*x) for x in matrix]
-#
-# # ToDo 90/100

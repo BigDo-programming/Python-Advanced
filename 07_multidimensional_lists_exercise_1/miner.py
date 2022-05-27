@@ -1,4 +1,5 @@
 import sys
+
 from io import StringIO
 from pprint import pprint
 
@@ -27,42 +28,71 @@ c * * * c *
 # sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input2)
 sys.stdin = StringIO(input3)
+from collections import deque
 
 
+def move(row, col, command, n):
+    if command == "left":
+        new_row, new_col = row, col - 1
+        if 0 <= row < n and 0 <= col - 1 < n:
+            return new_row, new_col
+        return row, col
+
+    if command == "right":
+        new_row, new_col = row, col + 1
+        if 0 <= row < n and 0 <= col + 1 < n:
+            return new_row, new_col
+        return row, col
+
+    if command == "up":
+        new_row, new_col = row - 1, col
+        if 0 <= row - 1 < n and 0 <= col < n:
+            return new_row, new_col
+        return row, col
+
+    if command == "down":
+
+        new_row, new_col = row + 1, col
+        if 0 <= row + 1 < n and 0 <= col < n:
+            return new_row, new_col
+        return row, col
 
 
+n = int(input())
+miner_row = 0
+miner_col = 0
+coal = 0
+direction = deque(input().split())
+matrix = []
+for i in range(n):
+    value = [x for x in input().split()]
+    matrix.append(value)
+    for j in range(n):
+        if matrix[i][j] == "s":
+            miner_row, miner_col = i, j
+        if matrix[i][j] == "c":
+            coal += 1
+is_gameover = False
+while direction:
+    if coal == 0:
+        break
+
+    command = direction.popleft()
+    miner_row, miner_col = move(miner_row, miner_col, command, n)
+    if matrix[miner_row][miner_col] == "e":
+        print(f"Game over! ({miner_row}, {miner_col})")
+        is_gameover = True
+        break
+    if matrix[miner_row][miner_col] == "c":
+        coal -= 1
+        if coal == 0:
+            print(f"You collected all coal! ({miner_row}, {miner_col})")
+            break
+    matrix[miner_row][miner_col] = "*"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if not direction and not is_gameover and coal > 0:
+    print(f"{coal} pieces of coal left. ({miner_row}, {miner_col})")
 
 
 #
