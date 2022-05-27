@@ -1,6 +1,7 @@
 import sys
 from io import StringIO
 
+
 input1 = """2 3
 1 2 3
 4 5 6
@@ -16,40 +17,41 @@ swap 0 0 0 1
 swap 0 1 0 0
 END"""
 
-sys.stdin = StringIO(input1)
+# sys.stdin = StringIO(input1)
 
 
+sys.stdin = StringIO(input2)
 
 
+def is_valid(row1, col1, row2, col2, n, m):
+    if 0 <= row1 < n and 0 <= row2 < n and 0 <= col1 < m and 0 <= col2 < m:
+        return True
 
 
+matrix = []
 
+n, m = [int(x) for x in input().split()]
+for i in range(n):
+    value = input().split()
+    matrix.append(value)
 
+while True:
+    command = input()
+    if command == "END":
+        break
+    command_split = command.split()
+    if command.startswith("swap") and len(command_split) == 5:
 
+        row1, col1, row2, col2 = [int(x) for x in command_split[1:]]
 
+        if is_valid(row1, col1, row2, col2, n, m):
+            matrix[row1][col1], matrix[row2][col2] = matrix[row2][col2], matrix[row1][col1]
+            [print(*num, sep=" ") for num in [j for j in matrix]]
+        else:
+            print("Invalid input!")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    else:
+        print("Invalid input!")
 
 # def is_valid(r, c, row, col):
 #     return 0 <= row < r and 0 <= col < c
