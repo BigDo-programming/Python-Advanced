@@ -23,9 +23,78 @@ KK00000K
 000K00KK"""
 
 # sys.stdin = StringIO(input1)
+# sys.stdin = StringIO(input2)
+sys.stdin = StringIO(input3)
 
 
-sys.stdin = StringIO(input2)
+def how_many_knights_attack(row, col, matrix):
+    count = 0
+    if 0 <= row - 2 < len(matrix) and 0 <= col - 1 < len(matrix):
+        if matrix[row - 2][col - 1] == "K":
+            count += 1
+
+    if 0 <= row - 1 < len(matrix) and 0 <= col - 2 < len(matrix):
+        if matrix[row - 1][col - 2] == "K":
+            count += 1
+
+    if 0 <= row + 1 < len(matrix) and 0 <= col - 2 < len(matrix):
+        if matrix[row + 1][col - 2] == "K":
+            count += 1
+
+    if 0 <= row + 2 < len(matrix) and 0 <= col - 1 < len(matrix):
+        if matrix[row + 2][col - 1] == "K":
+            count += 1
+
+    if 0 <= row - 2 < len(matrix) and 0 <= col + 1 < len(matrix):
+        if matrix[row - 2][col + 1] == "K":
+            count += 1
+
+    if 0 <= row - 1 < len(matrix) and 0 <= col + 2 < len(matrix):
+        if matrix[row - 1][col + 2] == "K":
+            count += 1
+
+    if 0 <= row + 1 < len(matrix) and 0 <= col + 2 < len(matrix):
+        if matrix[row + 1][col + 2] == "K":
+            count += 1
+
+    if 0 <= row + 2 < len(matrix) and 0 <= col + 1 < len(matrix):
+        if matrix[row + 2][col + 1] == "K":
+            count += 1
+    return count
+
+
+matrix = []
+
+n = int(input())
+for _ in range(n):
+    value = list(input())
+    matrix.append(value)
+
+
+removed_knights = 0
+while True:
+    knights_for_removed = 0
+    best_col = 0
+    best_row = 0
+
+    for i in range(n):
+        for j in range(n):
+
+            if matrix[i][j] == "0":
+                continue
+            numbers = how_many_knights_attack(i, j, matrix)
+            if numbers > knights_for_removed:
+                knights_for_removed = numbers
+                best_row = i
+                best_col = j
+
+    if knights_for_removed == 0:
+        break
+    if knights_for_removed > 0:
+        matrix[best_col][best_row] = "0"
+        removed_knights += 1
+
+print(removed_knights)
 
 
 
@@ -37,45 +106,6 @@ sys.stdin = StringIO(input2)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# sys.stdin = StringIO(input3)
 #
 # def is_inside(row, col, n):
 #     return 0 <= row < n and 0 <= col < n

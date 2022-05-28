@@ -24,49 +24,30 @@ END"""
 # sys.stdin = StringIO(input1)
 sys.stdin = StringIO(input2)
 
+matrix = []
+n = int(input())
+for i in range(n):
+    value = [int(x) for x in input().split()]
+    matrix.append(value)
 
+while True:
+    command = input().split()
 
+    if command[0] == "END":
+        break
 
+    row, col, value = [int(x) for x in command[1:]]
+    if 0 <= row < n and 0 <= col < n:
 
+        if command[0] == "Add":
+            matrix[row][col] += value
 
+        if command[0] == "Subtract":
+            matrix[row][col] -= value
+    else:
+        print("Invalid coordinates")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[print(*x) for x in matrix]
 
 #
 # def is_valid_coordinate(r, c, n):
