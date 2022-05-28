@@ -70,10 +70,9 @@ for _ in range(n):
     value = list(input())
     matrix.append(value)
 
-
 removed_knights = 0
 while True:
-    knights_for_removed = 0
+    best_knights = 0
     best_col = 0
     best_row = 0
 
@@ -83,28 +82,18 @@ while True:
             if matrix[i][j] == "0":
                 continue
             numbers = how_many_knights_attack(i, j, matrix)
-            if numbers > knights_for_removed:
-                knights_for_removed = numbers
+            if numbers > best_knights:
+                best_knights = numbers
                 best_row = i
                 best_col = j
 
-    if knights_for_removed == 0:
+    if best_knights == 0:
         break
-    if knights_for_removed > 0:
-        matrix[best_col][best_row] = "0"
-        removed_knights += 1
+
+    matrix[best_row][best_col] = "0"
+    removed_knights += 1
 
 print(removed_knights)
-
-
-
-
-
-
-
-
-
-
 
 #
 # def is_inside(row, col, n):
