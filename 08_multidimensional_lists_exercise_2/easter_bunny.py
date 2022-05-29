@@ -22,6 +22,8 @@ input3 = """"""
 
 # sys.stdin = StringIO(input1)
 sys.stdin = StringIO(input2)
+
+
 # sys.stdin = StringIO(input3)
 
 
@@ -42,8 +44,12 @@ def next_step(b_row, b_col, move_to):
 matrix = []
 start_row = 0
 start_col = 0
-bunny_path = ""
+
 paths = ["up", "down", "left", 'right']
+best_eggs = 0
+best_path = []
+best_bunny_path = ""
+
 n = int(input())
 for i in range(n):
     value = [x for x in input().split()]
@@ -54,6 +60,7 @@ for i in range(n):
 
 for direction in paths:
     eggs = 0
+    path = []
     bunny_row, bunny_col = start_row, start_col
     while True:
         bunny_row, bunny_col = next_step(bunny_row, bunny_col, direction)
@@ -62,18 +69,17 @@ for direction in paths:
         if matrix[bunny_row][bunny_col] == "X":
             break
         eggs += int(matrix[bunny_row][bunny_col])
-    print(eggs)
+        path.append([bunny_row, bunny_col])
 
-# pprint(matrix)
+    if eggs >= best_eggs:
+        best_eggs = eggs
+        best_bunny_path = direction
+        best_path = path
 
+print(best_bunny_path)
+[print(x) for x in best_path]
 
-
-
-
-
-
-
-
+print(best_eggs)
 
 # def move_up(row, col):
 #     return row - 1, col
