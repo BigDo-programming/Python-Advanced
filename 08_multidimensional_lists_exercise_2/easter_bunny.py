@@ -20,41 +20,51 @@ input2 = """8
 73 88 78 32 37 52 X 22"""
 input3 = """"""
 
+# sys.stdin = StringIO(input1)
 sys.stdin = StringIO(input2)
-
-
-# sys.stdin = StringIO(input2)
 # sys.stdin = StringIO(input3)
 
 
+def next_step(b_row, b_col, move_to):
+    if move_to == "up":
+        return b_row - 1, b_col
+
+    if move_to == "down":
+        return b_row + 1, b_col
+
+    if move_to == "left":
+        return b_row, b_col - 1
+
+    if move_to == "right":
+        return b_row, b_col + 1,
 
 
+matrix = []
+start_row = 0
+start_col = 0
+bunny_path = ""
+paths = ["up", "down", "left", 'right']
+n = int(input())
+for i in range(n):
+    value = [x for x in input().split()]
+    matrix.append(value)
+    for j in range(n):
+        if matrix[i][j] == "B":
+            start_row, start_col = i, j
 
+for direction in paths:
+    eggs = 0
+    bunny_row, bunny_col = start_row, start_col
+    while True:
+        bunny_row, bunny_col = next_step(bunny_row, bunny_col, direction)
+        if bunny_row < 0 or bunny_row >= len(matrix) or bunny_col < 0 or bunny_col >= len(matrix):
+            break
+        if matrix[bunny_row][bunny_col] == "X":
+            break
+        eggs += int(matrix[bunny_row][bunny_col])
+    print(eggs)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# pprint(matrix)
 
 
 
