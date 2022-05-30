@@ -31,9 +31,10 @@ Skoda
 green
 END"""
 
-# sys.stdin = StringIO(input1)
-sys.stdin = StringIO(input2)
+sys.stdin = StringIO(input1)
+# sys.stdin = StringIO(input2)
 # sys.stdin = StringIO(input3)
+
 
 from collections import deque
 
@@ -104,4 +105,4 @@ print(f"{passed_cars} total cars passed the crossroads.")
 # if not crash_happened:
 #     print("Everyone is safe.")
 #     print(f"{passed_cars} total cars passed the crossroads.")
-#
+
