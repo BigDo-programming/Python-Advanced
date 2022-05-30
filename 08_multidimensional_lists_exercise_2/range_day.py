@@ -31,61 +31,83 @@ shoot down
 move right 2
 shoot left"""
 
-sys.stdin = StringIO(input1)
+# sys.stdin = StringIO(input1)
+# sys.stdin = StringIO(input2)
+sys.stdin = StringIO(input3)
 
 
+def go_to(row, col, command, steps=1):
+    if command == "up":
+        return row - steps, col
+    elif command == "down":
+        return row + steps, col
+    elif command == "left":
+        return row, col - steps
+    elif command == "right":
+        return row, col + steps
 
 
+def is_outside(row_, col_, n):
+    return row_ < 0 or col_ < 0 or row_ >= n or col_ >= n
 
 
+matrix = []
+hit_target = []
+player_row = 0
+player_col = 0
 
+targets = 0
+size = 5
+for i in range(size):
+    value = input().split()
+    matrix.append(value)
+    for j in range(size):
+        if matrix[i][j] == "A":
+            player_row, player_col = i, j
+        elif matrix[i][j] == "x":
+            targets += 1
 
+firsts_targets = targets
+matrix[player_row][player_col] = "."
+n = int(input())
 
+for _ in range(n):
+    if targets == 0:
+        break
+    command = input().split()
 
+    if command[0] == "shoot":
+        bullet_row, bullet_col = player_row, player_col
 
+        while True:
+            bullet_row, bullet_col = go_to(bullet_row, bullet_col, command[1])
+            if is_outside(bullet_row, bullet_col, size):
+                break
+            elif matrix[bullet_row][bullet_col] == ".":
+                continue
+            elif matrix[bullet_row][bullet_col] == "x":
+                matrix[bullet_row][bullet_col] = "."
+                hit_target.append([bullet_row, bullet_col])
+                targets -= 1
+                break
 
+    elif command[0] == "move":
 
+        try_row, try_col = player_row, player_col
+        try_row, try_col = go_to(try_row, try_col, command[1], int(command[2]))
+        if is_outside(try_row, try_col, size):
+            continue
+        elif not matrix[try_row][try_col] == ".":
+            continue
+        else:
+            player_row, player_col = try_row, try_col
+            matrix[player_row][player_col] = "."
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if not targets:
+    print(f"Training completed! All {firsts_targets} targets hit.")
+else:
+    print(f"Training not completed! {targets} targets left.")
+[print(x) for x in hit_target]
 
 # def is_outside(row, col, size):
 #     return row < 0 or col < 0 or row >= size or col >= size

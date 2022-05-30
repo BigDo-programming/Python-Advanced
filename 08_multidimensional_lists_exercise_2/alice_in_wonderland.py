@@ -27,33 +27,63 @@ down
 down
 right"""
 # sys.stdin = StringIO(input1)
+
+
 sys.stdin = StringIO(input2)
 
+def next_step(row, col, direction):
+    if direction == "up":
+        return row - 1, col
+    elif direction == "down":
+        return row + 1, col
+    elif direction == "left":
+        return row, col - 1
+    elif direction == "right":
+        return row, col + 1
 
 
+matrix = []
+alice_row = 0
+alice_col = 0
+rabbit_row = 0
+rabbit_col = 0
+bags_of_tea = 0
+n = int(input())
+for i in range(n):
+    value = input().split()
+    matrix.append(value)
+    for j in range(n):
+        if matrix[i][j] == "A":
+            alice_row, alice_col = i, j
+            matrix[i][j] = "*"
 
+        elif matrix[i][j] == "R":
+            rabbit_row, rabbit_col = i, j
 
+have_a_party = False
+while True:
+    command = input()
+    alice_row, alice_col = next_step(alice_row, alice_col, command)
+    if alice_row < 0 or alice_col < 0 or alice_row >= n or alice_col >= n:
+        break
+    elif matrix[alice_row][alice_col] == "R":
+        matrix[alice_row][alice_col] = "*"
+        break
+    else:
+        if not matrix[alice_row][alice_col].isdigit():
+            matrix[alice_row][alice_col] = "*"
+            continue
+        bags_of_tea += int(matrix[alice_row][alice_col])
+        matrix[alice_row][alice_col] = "*"
+        if bags_of_tea >= 10:
+            have_a_party = True
+            break
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if have_a_party:
+    print("She did it! She went to the party.")
+else:
+    print("Alice didn't make it to the tea party.")
+[print(*x) for x in matrix]
 
 
 
