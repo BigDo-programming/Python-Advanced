@@ -1,10 +1,12 @@
 def even_odd(*args):
-    parity = 0 if args[-1] == "even" else 1
-    return [x for x in args[:-1] if x % 2 == parity]
+    even_or_odd = args[-1]
+    if_even_else_odd = 0 if even_or_odd == "even" else 1
+
+    return [x for x in args[: -1] if x % 2 == if_even_else_odd]
 
 
 print(even_odd(1, 2, 3, 4, 5, 6, "even"))
-# print(even_odd(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "odd"))
+print(even_odd(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "odd"))
 
 # def even_odd(*args):
 #     odd = []
@@ -24,3 +26,8 @@ print(even_odd(1, 2, 3, 4, 5, 6, "even"))
 #
 # # print(even_odd(1, 2, 3, 4, 5, 6, "even"))
 # print(even_odd(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "odd"))
+
+
+# def even_odd(*args):
+#     parity = 0 if args[-1] == "even" else 1
+#     return [x for x in args[:-1] if x % 2 == parity]
