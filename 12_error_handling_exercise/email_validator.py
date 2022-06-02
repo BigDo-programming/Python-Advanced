@@ -8,7 +8,7 @@ petergmail.com
 End"""
 input3 = """peter@gmail.hotmail
 End"""
-input4 = """peter@hotmail.jsd
+input4 = """peter@hotmail.com
 End"""
 
 # sys.stdin = StringIO(input1)
@@ -29,6 +29,17 @@ class InvalidDomainError(Exception):
     pass
 
 
+def is_domain_invalid(domain, valid_domains):
+    result = True
+    for valid_domain in valid_domains:
+        if domain.endswith(valid_domain):
+            result = False
+            break
+    return result
+
+
+valid_domains = ["com", "bg", "org", "net"]
+
 while True:
     data = input()
     if data == "End":
@@ -38,13 +49,11 @@ while True:
         raise MustContainAtSymbolError("Email must contain @")
 
     email_parts = data.split("@")
-    username = email_parts[0]
+    username,domain = email_parts
     if len(username) <= 4:
         raise NameTooShortError("Name must be more than 4 characters")
 
-    mail_server_and_domain = email_parts[1].split(".")
-    domain = mail_server_and_domain[1]
-    if domain not in "com, bg, org, net":
+    if is_domain_invalid(domain,valid_domains):
         raise InvalidDomainError(f"Domain must be one of the following: .com, .bg, .org, .net")
 
     print("Email is valid")
