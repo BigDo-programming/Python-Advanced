@@ -7,6 +7,7 @@ file = open("numbers.txt")
 # print(result)
 
 # Variant 2
+
 print(
     sum(
         [int(line) for line in file]
