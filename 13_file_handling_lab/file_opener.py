@@ -1,6 +1,3 @@
-import os
-
-file = open("try.txt", "a")
-
-
-print(file)
+file = open("text.txt")
+for line in file:
+    print(line)
