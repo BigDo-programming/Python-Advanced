@@ -27,7 +27,7 @@ End"""
 
 # sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input2)
-sys.stdin = StringIO(input3)
+# sys.stdin = StringIO(input3)
 
 numbers_dictionary = {}
 
