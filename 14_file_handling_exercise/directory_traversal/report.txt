@@ -1,0 +1,6 @@
+.py
+- - - C:\Users\BaiDo\Documents\GitHub\Python-Advanced\14_file_handling_exercise\directory_traversal\directory_traversal.py
+.txt
+- - - C:\Users\BaiDo\Documents\GitHub\Python-Advanced\14_file_handling_exercise\directory_traversal\dir_1\dir_1.1\file_1.txt
+- - - C:\Users\BaiDo\Documents\GitHub\Python-Advanced\14_file_handling_exercise\directory_traversal\dir_2\file_2.txt
+- - - C:\Users\BaiDo\Documents\GitHub\Python-Advanced\14_file_handling_exercise\directory_traversal\report.txt
