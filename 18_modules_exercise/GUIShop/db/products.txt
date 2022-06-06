@@ -1,5 +1,5 @@
-{"id": 1, "name": "Samson Meteor Mic", "count": 10, "image": "mic.jpg"}
-{"id": 2, "name": "Iphone XR", "count": 5, "image": "iphone.jpg"}
+{"id": 1, "name": "Samson Meteor Mic", "count": 9, "image": "mic.jpg"}
+{"id": 2, "name": "Iphone XR", "count": 4, "image": "iphone.jpg"}
 {"id": 3, "name": "Dell Latitude 5480", "count": 3, "image": "dell.jpg"}
 {"id": 4, "name": "Notebook", "count": 50, "image": "notebook.jpg"}
 {"id": 5, "name": "Dell Docking Station", "count": 5, "image": "docking-station.jpg"}

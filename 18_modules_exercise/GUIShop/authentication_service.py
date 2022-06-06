@@ -16,7 +16,9 @@ def register(username, password, first_name, last_name):
             'username': username,
             'password': password,
             'firstName': first_name,
-            'lastName': last_name
+            'lastName': last_name,
+            'products': []
+
         }
 
         file.write(json.dumps(user_obj))
@@ -30,6 +32,6 @@ def login(username, password):
         for user_line in users:
             user = json.loads(user_line.strip())
             if user['username'] == username and user['password'] == password:
-                session.write(user_line)
+                session.write(user['username'])
                 return True
         return False

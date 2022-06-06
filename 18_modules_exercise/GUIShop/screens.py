@@ -1,6 +1,7 @@
+import json
 import tkinter as tk
 import os
-
+from global_constants import *
 from PIL import ImageTk, Image
 
 from authentication_service import register, login
@@ -92,6 +93,41 @@ def render_login_screen(window: tk.Tk):
     ).grid(row=3, column=1)
 
 
+def buy_products(button,window):
+    _, product_id = button.cget("text").split()
+    product_id = int(product_id)
+    # login_user = None
+    with open(os.path.join(DB_FOLDER_NAME, SESSION_FILE_NAME), "r") as login_file:
+        login_user = login_file.read()
+
+    with open(os.path.join(DB_FOLDER_NAME, USERS_FILE_NAME), 'r+') as file:
+
+        users = file.readlines()
+        file.seek(0)
+        for user in users:
+            current_user = json.loads(user)
+            if current_user.get("username") == login_user:
+                current_user["products"].append(product_id)
+            file.write(json.dumps(current_user))
+            file.write("\n")
+
+    with open(os.path.join(DB_FOLDER_NAME, PRODUCTS_FILE_NAME), "r+") as product_file:
+
+        products = product_file.readlines()
+        product_file.seek(0)
+        for product in products:
+            current_product = json.loads(product)
+            if current_product["id"] == product_id:
+                current_product["count"] -= 1
+            product_file.write(json.dumps(current_product))
+            product_file.write("\n")
+
+
+    render_products_screen(window)
+
+
+
+
 def render_products_screen(window: tk.Tk):
     clear_window(window)
 
@@ -114,11 +150,13 @@ def render_products_screen(window: tk.Tk):
 
         tk.Label(window, text=product['count']).grid(row=row_idx + 2, column=col_idx)
 
-        tk.Button(
+        button = tk.Button(
             window,
-            text="Buy",
-            bg='black',
+            text=f"Buy {product['id']}",
+            bg='grey',
             fg='white',
-        ).grid(row=row_idx + 3, column=col_idx)
+        )
+        button.configure(command=lambda b=button: buy_products(b,window))
+        button.grid(row=row_idx + 3, column=col_idx)
 
         col_idx += 1
