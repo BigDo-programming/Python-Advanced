@@ -1,7 +1,0 @@
-{"id": "1", "name": "Samson Meteor Mic", "count": "10", "image": "mic.jpg"}
-{"id": "2", "name": "Samson", "count": "5", "image": "mic.jpg"}
-{"id": "3", "name": "SMeteor", "count": "20", "image": "mic.jpg"}
-{"id": "4", "name": "Alabala", "count": "20", "image": "mic.jpg"}
-{"id": "5", "name": "Banananica", "count": "20", "image": "mic.jpg"}
-{"id": "6", "name": "Try", "count": "20", "image": "mic.jpg"}
-{"id": "7", "name": "Olelel", "count": "20", "image": "mic.jpg"}
