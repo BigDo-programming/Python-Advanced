@@ -50,7 +50,7 @@ def count(text):
     return f"{text} ({count_ch})({count_symbol})"
 
 
-with open('text.txt') as file, open('output.txt','w') as output_file:
+with open('text.txt') as file, open('output.txt', 'w') as output_file:
     for index, line in enumerate(file):
         line = count(line.strip())
         output_file.write(f"Line {index + 1}: {line}")

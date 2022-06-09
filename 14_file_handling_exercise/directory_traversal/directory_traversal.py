@@ -5,7 +5,6 @@
 
 import os
 
-
 # def traverse_directories(dir_path, result):
 #
 #     for x in os.listdir(dir_path):
@@ -42,7 +41,7 @@ for root, _, files in os.walk(os.getcwd()):
         ext = file.split(".")[-1]
         if ext not in result:
             result[ext] = []
-        result[ext].append(os.path.join(root,file))
+        result[ext].append(os.path.join(root, file))
 
 with open("report.txt", "w") as result_file:
     for ext, files in sorted(result.items()):
