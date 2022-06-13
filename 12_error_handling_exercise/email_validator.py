@@ -49,11 +49,11 @@ while True:
         raise MustContainAtSymbolError("Email must contain @")
 
     email_parts = data.split("@")
-    username,domain = email_parts
+    username, domain = email_parts
     if len(username) <= 4:
         raise NameTooShortError("Name must be more than 4 characters")
 
-    if is_domain_invalid(domain,valid_domains):
+    if is_domain_invalid(domain, valid_domains):
         raise InvalidDomainError(f"Domain must be one of the following: .com, .bg, .org, .net")
 
     print("Email is valid")
