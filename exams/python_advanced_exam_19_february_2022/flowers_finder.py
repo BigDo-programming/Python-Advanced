@@ -15,45 +15,91 @@ sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input3)
 from collections import deque
 
-
-def check(ch, flowers):
-    for i in range(len(flowers)):
-        for j in flowers[i]:
-            if ch == j:
-                flowers[i] = flowers[i].replace(ch, "*")
-
-    return flowers
-
-
 vowels = deque(input().split())
 consonants = input().split()
-
-finish = set()
-flowers = ["rose", "tulip", "lotus", "daffodil"]
-flowers_star = ["****", "*****", "*****", "********"]
-flowers_copy = ["rose", "tulip", "lotus", "daffodil"]
-
-while vowels or consonants:
-    if finish:
+found_flower = False
+flowers_dict = {
+    "rose": [],
+    "tulip": [],
+    "lotus": [],
+    "daffodil": []
+}
+while vowels and consonants:
+    if found_flower:
         break
     if not vowels:
         break
     if not consonants:
         break
     vowel = vowels.popleft()
-    flowers = check(vowel, flowers)
     consonant = consonants.pop()
-    flowers = check(consonant, flowers)
-    for i in range(len(flowers)):
-        if flowers[i] == flowers_star[i]:
-            finish.add(flowers_copy[i])
-            break
 
-if finish:
-    print(f"Word found: {''.join(finish)}")
-else:
-    print(f"Cannot find any word!")
+    for key, value in flowers_dict.items():
+        if found_flower:
+            break
+        for i in key:
+
+            if vowel == i and i not in flowers_dict[key]:
+                ch_count = key.count(i)
+                for _ in range(ch_count):
+                    flowers_dict[key].append(vowel)
+
+            if consonant == i and i not in flowers_dict[key]:
+                ch_count = key.count(i)
+                for _ in range(ch_count):
+                    flowers_dict[key].append(consonant)
+
+            if ''.join(sorted(list(key))) == ''.join(sorted(list(value))):
+                print(f"Word found: {key}")
+                found_flower = True
+                break
+
+if not found_flower:
+    print("Cannot find any word!")
+
 if vowels:
     print(f"Vowels left: {' '.join(vowels)}")
 if consonants:
     print(f"Consonants left: {' '.join(consonants)}")
+
+# def check(ch, flowers):
+#     for i in range(len(flowers)):
+#         for j in flowers[i]:
+#             if ch == j:
+#                 flowers[i] = flowers[i].replace(ch, "*")
+#
+#     return flowers
+#
+#
+# vowels = deque(input().split())
+# consonants = input().split()
+#
+# finish = set()
+# flowers = ["rose", "tulip", "lotus", "daffodil"]
+# flowers_star = ["****", "*****", "*****", "********"]
+# flowers_copy = ["rose", "tulip", "lotus", "daffodil"]
+#
+# while vowels or consonants:
+#     if finish:
+#         break
+#     if not vowels:
+#         break
+#     if not consonants:
+#         break
+#     vowel = vowels.popleft()
+#     flowers = check(vowel, flowers)
+#     consonant = consonants.pop()
+#     flowers = check(consonant, flowers)
+#     for i in range(len(flowers)):
+#         if flowers[i] == flowers_star[i]:
+#             finish.add(flowers_copy[i])
+#             break
+#
+# if finish:
+#     print(f"Word found: {''.join(finish)}")
+# else:
+#     print(f"Cannot find any word!")
+# if vowels:
+#     print(f"Vowels left: {' '.join(vowels)}")
+# if consonants:
+#     print(f"Consonants left: {' '.join(consonants)}")
