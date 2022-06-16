@@ -1,33 +1,23 @@
 def words_sorting(*args):
-    sum_all_values = 0
-    sorted_dict = {}
+    my_dict = {}
     for word in args:
-        symbol_sum = 0
-        for ch in word:
-            symbol_sum += ord(ch)
-        sorted_dict[word] = symbol_sum
-        sum_all_values += symbol_sum
+        value = 0
+        for i in word:
+            value += ord(i)
 
-    if sum_all_values % 2 == 0:
-        sorted(sorted_dict.items(), key=lambda item: item[1])
-        data = ''
-        for key, value in sorted(sorted_dict.items()):
-            data += f"{key} - {value}" + '\n'
-
-        return data.strip()
-
-        # By keys in ascending order
-
+        my_dict[word] = value
+    my_sum = sum(my_dict.values())
+    result = []
+    if my_sum % 2 == 0:
+        for words, score in sorted(my_dict.items(), key=lambda a: a[0]):
+            result.append(f"{words} - {score}")
     else:
-        sorted(sorted_dict.items(), key=lambda item: item[1])
-        data = ''
-        for key, value in sorted_dict.items():
-            data += f"{key} - {value}" + '\n'
+        for words, score in sorted(my_dict.items(), key=lambda a: -a[1]):
+            result.append(f"{words} - {score}")
 
-        return data.strip()
-        # By values in descending order
+    # sorted(my_dict.items(), key=lambda a: a[0]) if my_sum % 2 == 0 else sorted(my_dict.items(),key=lambda a: -a[1])
+    return '\n'.join(result)
 
-# ToDo 80/100
 #
 # print(
 #     words_sorting(

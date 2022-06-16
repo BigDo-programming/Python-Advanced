@@ -1,19 +1,35 @@
 def start_spring(**kwargs):
-    data = ''
-    my_dict = {}
-    for key, value in kwargs.items():
-        if value not in my_dict:
-            my_dict[value] = []
-        my_dict[value] += [key]
-    # my_dict_ = dict(sorted(my_dict.items(), key=lambda kv: (kv[0],kv[1])))
-    my_dict = dict(sorted(my_dict.items(), key=lambda kv: (-len(kv[1]), kv[0])))
-    # sorted(my_dict.items(),key=lambda x: len(x))
-    for key, value in my_dict.items():
+    result = {}
+    return_result = []
 
-        data += f"{key}:" + "\n"
+    for spring_object, type in kwargs.items():
+        if type not in result:
+            result[type] = []
+        result[type].append(spring_object)
+
+    for key, value in sorted(result.items(), key=lambda a: (-len(a[1]), a[0])):
+        return_result.append(f"{key}:")
         for i in sorted(value):
-            data += f"-{i}" + "\n"
-    return data.strip()
+            return_result.append(f"-{i}")
+    return '\n'.join(return_result)
+
+
+# def start_spring(**kwargs):
+#     data = ''
+#     my_dict = {}
+#     for key, value in kwargs.items():
+#         if value not in my_dict:
+#             my_dict[value] = []
+#         my_dict[value] += [key]
+#     # my_dict_ = dict(sorted(my_dict.items(), key=lambda kv: (kv[0],kv[1])))
+#     my_dict = dict(sorted(my_dict.items(), key=lambda kv: (-len(kv[1]), kv[0])))
+#     # sorted(my_dict.items(),key=lambda x: len(x))
+#     for key, value in my_dict.items():
+#
+#         data += f"{key}:" + "\n"
+#         for i in sorted(value):
+#             data += f"-{i}" + "\n"
+#     return data.strip()
 
 
 
