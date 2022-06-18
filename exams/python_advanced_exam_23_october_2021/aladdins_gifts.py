@@ -76,3 +76,64 @@ if magics:
 for key, value in sorted(presents.items()):
     if value > 0:
         print(f"{key}: {value}")
+
+
+#
+# from collections import deque
+#
+# materials = [int(x) for x in input().split()]
+# magic_level = deque([int(x) for x in input().split()])
+# gemstone = 0
+# porcelain_sculpture = 0
+# gold = 0
+# diamond_jewellery = 0
+# succeeded = False
+#
+# while not magic_level or materials:
+#     if not magic_level:
+#         break
+#     if not materials:
+#         break
+#     material = materials.pop()
+#     magic = magic_level.popleft()
+#     result = magic + material
+#
+#     if result < 100:
+#
+#         if result % 2 == 0:
+#             result = (magic * 3) + (material * 2)
+#
+#         else:
+#             result = (magic * 2) + (material * 2)
+#
+#     if result > 499:
+#         result = result / 2
+#
+#     if 100 <= result <= 199:
+#         gemstone += 1
+#     elif 200 <= result <= 299:
+#         porcelain_sculpture += 1
+#     elif 300 <= result <= 399:
+#         gold += 1
+#     elif 400 <= result <= 499:
+#         diamond_jewellery += 1
+# if gemstone >= 1 and porcelain_sculpture >= 1 or gold >= 1 and diamond_jewellery >= 1:
+#     succeeded = True
+#
+# if succeeded:
+#     print("The wedding presents are made!")
+# else:
+#     print("Aladdin does not have enough wedding presents.")
+# if materials:
+#     print(f"Materials left: {', '.join([str(x) for x in materials])}")
+# if magic_level:
+#     print(f"Magic left: {', '.join([str(x) for x in magic_level])}")
+#
+# if diamond_jewellery:
+#     print(f'Diamond Jewellery: {diamond_jewellery}')
+# if gemstone:
+#     print(f'Gemstone: {gemstone}')
+# if gold:
+#     print(f'Gold: {gold}')
+# if porcelain_sculpture:
+#     print(f'Porcelain Sculpture: {porcelain_sculpture}')
