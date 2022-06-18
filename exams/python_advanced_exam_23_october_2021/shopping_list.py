@@ -17,6 +17,25 @@ def shopping_list(budget, **kwargs):
 
     return data.strip()
 
+# def shopping_list(budget, **kwargs):
+#     count = 0
+#     return_result = ''
+#     if budget < 100:
+#         return 'You do not have enough budget.'
+#     for key, value in kwargs.items():
+#         price = float(value[0])
+#         quantity = int(value[1])
+#         result = quantity*price
+#         if budget >= result:
+#             budget -= result
+#             count += 1
+#             return_result += f"You bought {key} for {result:.2f} leva."+ '\n'
+#             if count == 5:
+#                 break
+#
+#     return return_result.strip()
+
+
 # print(shopping_list(100,
 #                     microwave=(70, 2),
 #                     skirts=(15, 4),
