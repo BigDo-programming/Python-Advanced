@@ -61,3 +61,36 @@ for _ in range(3):
                 sum_of_the_points += int(matrix[r][throw_col])
 
 print(prizes(sum_of_the_points))
+
+# import re
+#
+# size = 6
+# score = 0
+# matrix = []
+# for row in range(size):
+#     # value = [int(x) if x.isdigit() else str(x) for x in input().split()]
+#     value = input().split()
+#     matrix.append(value)
+#
+# for _ in range(3):
+#     command = input()
+#     shot_row, shot_col = [int(x) for x in re.findall(r'\d+', command)]
+#     if 0 <= shot_row < size and 0 <= shot_col < size:
+#         if matrix[shot_row][shot_col] == 'B':
+#             matrix[shot_row][shot_col] = '0'
+#             for i in range(size):
+#                 if matrix[i][shot_col].isdigit():
+#                     score += int(matrix[i][shot_col])
+#
+# prize = ''
+# if 100 <= score <= 199:
+#     prize = 'Football'
+# elif 200 <= score <= 299:
+#     prize = 'Teddy Bear'
+# elif 300 <= score:
+#     prize = 'Lego Construction Set'
+#
+# if prize:
+#     print(f"Good job! You scored {score} points, and you've won {prize}.")
+# else:
+#     print(f"Sorry! You need {100 -score} points more to win a prize.")
