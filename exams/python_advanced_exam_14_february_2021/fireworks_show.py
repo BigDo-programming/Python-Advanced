@@ -13,8 +13,58 @@ input3 = """"""
 # sys.stdin = StringIO(input1)
 sys.stdin = StringIO(input2)
 # sys.stdin = StringIO(input3)
-# from collections import deque
-#
+
+
+from collections import deque
+
+maria_firework = {
+    'Palm Fireworks': 0,
+    'Willow Fireworks': 0,
+    'Crossette Fireworks': 0
+}
+
+firework_effects = deque([int(x) for x in input().split(', ') if int(x) > 0])
+explosive_power = [int(x) for x in input().split(', ') if int(x) > 0]
+while firework_effects and explosive_power:
+
+    if maria_firework['Palm Fireworks'] >= 3 and maria_firework['Willow Fireworks'] >= 3 and maria_firework[
+        'Crossette Fireworks'] >= 3:
+        break
+
+    firework = firework_effects.popleft()
+    explosive = explosive_power.pop()
+    result = firework + explosive
+
+    if result % 5 == 0 and result % 3 == 0:
+        maria_firework['Crossette Fireworks'] += 1
+        continue
+
+    if result % 5 == 0 and not result % 3 == 0:
+        maria_firework['Willow Fireworks'] += 1
+        continue
+
+    if not result % 5 == 0 and result % 3 == 0:
+        maria_firework['Palm Fireworks'] += 1
+        continue
+
+    if firework >= 2:
+        firework_effects.append(firework - 1)
+    explosive_power.append(explosive)
+
+if maria_firework['Palm Fireworks'] >= 3 and maria_firework['Willow Fireworks'] >= 3 and maria_firework[
+    'Crossette Fireworks'] >= 3:
+
+    print("Congrats! You made the perfect firework show!")
+else:
+    print("Sorry. You can't make the perfect firework show.")
+
+if firework_effects:
+    print(f"Firework Effects left: {', '.join([str(x) for x in firework_effects])}")
+if explosive_power:
+    print(f"Explosive Power left: {', '.join([str(x) for x in explosive_power])}")
+for key, value in maria_firework.items():
+    print(f"{key}: {value}")
+
 # firework = {
 #     "Palm Fireworks": 0,
 #     "Willow Fireworks": 0,
@@ -62,55 +112,55 @@ sys.stdin = StringIO(input2)
 
 
 
-from collections import deque
-
-firework = {
-    "Palm Fireworks": 0,
-    "Willow Fireworks": 0,
-    "Crossette Fireworks": 0,
-
-}
-firework_effects = deque([int(x) for x in input().split(", ")])
-explosive_power = [int(x) for x in input().split(", ")]
-effect = 0
-power = 0
-while firework_effects and explosive_power:
-    if firework["Palm Fireworks"] >= 3 and firework["Willow Fireworks"] >= 3 and firework["Crossette Fireworks"] >= 3:
-        break
-
-    if firework_effects:
-        effect = firework_effects.popleft()
-        if effect <= 0:
-            continue
-    else:
-        break
-    if explosive_power:
-        power = explosive_power.pop()
-        if power <= 0:
-            firework_effects.appendleft(effect)
-            continue
-    else:
-        break
-    mix = effect + power
-    if mix % 3 == 0 and not mix % 5 == 0:
-        firework["Palm Fireworks"] += 1
-    elif not mix % 3 == 0 and mix % 5 == 0:
-        firework["Willow Fireworks"] += 1
-    elif mix % 3 == 0 and mix % 5 == 0:
-        firework["Crossette Fireworks"] += 1
-    else:
-        firework_effects.append(effect - 1)
-        explosive_power.append(power)
-
-
-if firework["Palm Fireworks"] >= 3 and firework["Willow Fireworks"] >= 3 and firework["Crossette Fireworks"] >= 3:
-    print("Congrats! You made the perfect firework show!")
-else:
-    print("Sorry. You can't make the perfect firework show.")
-if firework_effects:
-    print(f"Firework Effects left: {', '.join([str(x) for x in firework_effects])}")
-if explosive_power:
-    print(f"Explosive Power left: {', '.join([str(x) for x in explosive_power])}")
-for key,value in firework.items():
-    print(f"{key}: {value}")
+# from collections import deque
+#
+# firework = {
+#     "Palm Fireworks": 0,
+#     "Willow Fireworks": 0,
+#     "Crossette Fireworks": 0,
+#
+# }
+# firework_effects = deque([int(x) for x in input().split(", ")])
+# explosive_power = [int(x) for x in input().split(", ")]
+# effect = 0
+# power = 0
+# while firework_effects and explosive_power:
+#     if firework["Palm Fireworks"] >= 3 and firework["Willow Fireworks"] >= 3 and firework["Crossette Fireworks"] >= 3:
+#         break
+#
+#     if firework_effects:
+#         effect = firework_effects.popleft()
+#         if effect <= 0:
+#             continue
+#     else:
+#         break
+#     if explosive_power:
+#         power = explosive_power.pop()
+#         if power <= 0:
+#             firework_effects.appendleft(effect)
+#             continue
+#     else:
+#         break
+#     mix = effect + power
+#     if mix % 3 == 0 and not mix % 5 == 0:
+#         firework["Palm Fireworks"] += 1
+#     elif not mix % 3 == 0 and mix % 5 == 0:
+#         firework["Willow Fireworks"] += 1
+#     elif mix % 3 == 0 and mix % 5 == 0:
+#         firework["Crossette Fireworks"] += 1
+#     else:
+#         firework_effects.append(effect - 1)
+#         explosive_power.append(power)
+#
+#
+# if firework["Palm Fireworks"] >= 3 and firework["Willow Fireworks"] >= 3 and firework["Crossette Fireworks"] >= 3:
+#     print("Congrats! You made the perfect firework show!")
+# else:
+#     print("Sorry. You can't make the perfect firework show.")
+# if firework_effects:
+#     print(f"Firework Effects left: {', '.join([str(x) for x in firework_effects])}")
+# if explosive_power:
+#     print(f"Explosive Power left: {', '.join([str(x) for x in explosive_power])}")
+# for key,value in firework.items():
+#     print(f"{key}: {value}")
 
