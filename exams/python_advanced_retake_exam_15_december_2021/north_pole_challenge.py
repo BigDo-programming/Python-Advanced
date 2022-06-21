@@ -42,69 +42,71 @@ sys.stdin = StringIO(input1)
 
 # sys.stdin = StringIO(input2)
 # sys.stdin = StringIO(input3)
-def found_next_step(r, c, m):
-    if 0 > r or r >= len(m):
-        r = r % len(m)
-    if 0 > c or c >= len(m[0]):
-        c = c % len(m[0])
-
-    return r, c
-
-
-def move(direction, row, col, matrix):
-    if direction == "up":
-        return found_next_step(row - 1, col, matrix)
-
-    if direction == "down":
-        return found_next_step(row + 1, col, matrix)
-
-    if direction == "left":
-        return found_next_step(row, col - 1, matrix)
-
-    if direction == "right":
-        return found_next_step(row, col + 1, matrix)
-
 
 matrix = []
-my_row = 0
-my_col = 0
 christmas_decorations = 0
 gifts = 0
 cookies = 0
-items_for_collect = 0
-n, m = [int(x) for x in input().split(', ')]
+item = 0
+santa_row, santa_col = 0, 0
+n, m = [int(x) for x in input().split(", ")]
 for row in range(n):
     value = input().split()
     matrix.append(value)
     for col in range(m):
-        if matrix[row][col] == "Y":
-            my_row, my_col = row, col
-            matrix[my_row][my_col] = "x"
-        if matrix[row][col] == "D" or matrix[row][col] == "C" or matrix[row][col] == "G":
-            items_for_collect += 1
+        if matrix[row][col] == 'Y':
+            santa_row, santa_col = row, col
+        if matrix[row][col] in 'D, G, C':
+            item += 1
 
-command = input()
-while not command == "End":
-    direction, steps = command.split("-")
-    for i in range(int(steps)):
-        my_row, my_col = move(direction, my_row, my_col, matrix)
-        if matrix[my_row][my_col] == "D":
-            christmas_decorations += 1
+matrix[santa_row][santa_col] = 'x'
 
-        if matrix[my_row][my_col] == "G":
-            gifts += 1
-        if matrix[my_row][my_col] == "C":
-            cookies += 1
-        matrix[my_row][my_col] = "x"
 
+def move(row, col, move_to):
+    if move_to == 'up':
+        return row - 1, col
+    if move_to == 'down':
+        return row + 1, col
+    if move_to == 'left':
+        return row, col - 1
+    if move_to == 'right':
+        return row, col + 1
+
+
+collect_all = False
+while True:
+    if collect_all:
+        break
     command = input()
+    if command == 'End':
+        break
 
-matrix[my_row][my_col] = "Y"
-if items_for_collect == 0:
+    direction = command.split('-')[0]
+    step = int(command.split('-')[1])
+    for i in range(step):
+        santa_row, santa_col = move(santa_row, santa_col, direction)
+        santa_row = santa_row % n
+        santa_col = santa_col % m
+        if matrix[santa_row][santa_col] == 'D':
+            item -= 1
+            christmas_decorations += 1
+        if matrix[santa_row][santa_col] == 'G':
+            item -= 1
+            gifts += 1
+        if matrix[santa_row][santa_col] == 'C':
+            item -= 1
+            cookies += 1
+        matrix[santa_row][santa_col] = 'x'
+        if item == 0:
+            collect_all = True
+            break
+
+matrix[santa_row][santa_col] = 'Y'
+
+if collect_all:
     print("Merry Christmas!")
-print(f"You've collected:")
-print(f"- {christmas_decorations} Christmas decorations")
-print(f"- {gifts} Gifts")
-print(f"- {cookies} Cookies")
+print("You've collected:")
+print(f'- {christmas_decorations} Christmas decorations')
+print(f'- {gifts} Gifts')
+print(f'- {cookies} Cookies')
 [print(*x) for x in matrix]
-#  Todo i thing in "North Pole Challenge" have error input. Missing "End"

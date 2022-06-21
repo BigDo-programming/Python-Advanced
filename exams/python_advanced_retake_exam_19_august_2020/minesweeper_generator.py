@@ -56,17 +56,17 @@ size = int(input())
 for r in range(size):
     value = [None] * size
     matrix.append(value)
+
 n = int(input())
 for _ in range(n):
     data = input()
-    bomb_row, bomb_col = [int(x) for x in re.findall(r"\d", data)]
+    bomb_row, bomb_col = [int(x) for x in re.findall(r"\d+", data)]
     matrix[bomb_row][bomb_col] = "*"
 
 for row in range(size):
     for col in range(size):
-        if matrix[row][col] == "*":
-            continue
-        matrix[row][col] = create_value(row, col, matrix)
+        if not matrix[row][col] == "*":
+            count = create_value(row, col, matrix)
+            matrix[row][col] = count
 
 [print(*x) for x in matrix]
-# ToDo 87/100
