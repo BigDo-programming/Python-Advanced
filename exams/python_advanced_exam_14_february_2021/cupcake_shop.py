@@ -1,16 +1,30 @@
-def stock_availability(inventory, delivery_or_sell, *args):
+# def stock_availability(inventory, delivery_or_sell, *args):
+#     if delivery_or_sell == "delivery":
+#         return inventory + list(args)
+#     if not args:
+#         return inventory[1:]
+#
+#     if isinstance(args[0], int):
+#         count = args[0]
+#         return inventory[count:]
+#
+#     sold_item = set(args)
+#     return [x for x in inventory if x not in sold_item]
+
+
+def stock_availability(inventory_list, delivery_or_sell, *args):
+
     if delivery_or_sell == "delivery":
-        return inventory + list(args)
+        return inventory_list+list(args)
+
     if not args:
-        return inventory[1:]
+        return inventory_list[1:]
 
     if isinstance(args[0], int):
-        count = args[0]
-        return inventory[count:]
+        return inventory_list[args[0]:]
 
-    sold_item = set(args)
-    return [x for x in inventory if x not in sold_item]
-
+    if isinstance(args[0], str):
+        return [x for x in inventory_list if x not in args]
 
 print(stock_availability(["choco", "vanilla", "banana"], "delivery", "caramel", "berry"))
 print(stock_availability(["chocolate", "vanilla", "banana"], "delivery", "cookie", "banana"))
