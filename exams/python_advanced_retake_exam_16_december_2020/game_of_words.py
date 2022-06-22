@@ -45,49 +45,47 @@ left"""
 sys.stdin = StringIO(input3)
 
 
-def move(r, c, command):
-    if command == "up":
-        return r - 1, c
-    if command == "down":
-        return r + 1, c
-    if command == "left":
-        return r, c - 1
-    if command == "right":
-        return r, c + 1
+def move(row_, col_, direction):
+    if direction == 'up':
+        return row_ - 1, col_
+
+    if direction == 'down':
+        return row_ + 1, col_
+
+    if direction == 'left':
+        return row_, col_ - 1
+
+    if direction == 'right':
+        return row_, col_ + 1
 
 
-text = list(input())
-size = int(input())
 matrix = []
-player_r = 0
-player_c = 0
+string = input()
+size = int(input())
+p_row, p_col = 0, 0
+
 for r in range(size):
-    value = list(input())
-    matrix.append(value)
+    matrix.append(list(input()))
     for c in range(size):
         if matrix[r][c] == "P":
-            player_r, player_c = r, c
-            matrix[player_r][player_c] = "-"
+            p_row, p_col = r, c
+
+matrix[p_row][p_col] = '-'
 
 n = int(input())
-end_row = player_r
-end_col = player_c
-for _ in range(n):
+for i in range(n):
     command = input()
-    player_r, player_c = move(player_r, player_c, command)
-    if 0 <= player_r < len(matrix) and 0 <= player_c < len(matrix):
-        end_row, end_col = player_r, player_c
-        char = str(matrix[player_r][player_c])
-        if char.isalpha():
-            text.append(char)
-            matrix[player_r][player_c] = "-"
-
+    row, col = move(p_row, p_col, command)
+    if row < 0 or row >= size or col < 0 or col >= size:
+        if string:
+            string = string[:-1]
     else:
-        if text:
-            text.pop()
+        p_row, p_col = row, col
+        if not matrix[p_row][p_col] == '-':
+            string += matrix[p_row][p_col]
+            matrix[p_row][p_col] = '-'
 
-matrix[end_row][end_col] = "P"
+matrix[p_row][p_col] = 'P'
+print(string)
+[print(*x, sep='') for x in matrix]
 
-print(*text, sep="")
-[print(*x, sep="") for x in matrix]
-# ToDo 90/100
