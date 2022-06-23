@@ -12,30 +12,30 @@ sys.stdin = StringIO(input1)
 # sys.stdin = StringIO(input3)
 
 
-def move(row_, col_, destination):
+def move(row, col, destination):
     if destination == 'up':
-        return row_ - 1, col_
+        return row - 1, col
 
     if destination == 'down':
-        return row_ + 1, col_
+        return row + 1, col
 
     if destination == 'left':
-        return row_, col_ - 1
+        return row, col - 1
 
     if destination == 'right':
-        return row_, col_ + 1
+        return row, col + 1
 
 
 matrix = []
 
 m_row, m_col = 0, 0
 size = int(input())
-for row in range(size):
+for r in range(size):
 
     # value = input().split()
     value = [int(x) for x in input().split()]
     matrix.append(value)
 
-    for col in range(size):
-        if matrix[row][col] == '':
-            m_row, m_col = row, col
+    for c in range(size):
+        if matrix[r][c] == '':
+            m_row, m_col = r, c
