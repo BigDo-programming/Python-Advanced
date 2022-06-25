@@ -49,7 +49,7 @@ while vowels and consonants:
                 for _ in range(ch_count):
                     flowers_dict[key].append(consonant)
 
-            if ''.join(sorted(list(key))) == ''.join(sorted(list(value))):
+            if sorted(key) == sorted(value):
                 print(f"Word found: {key}")
                 found_flower = True
                 break
