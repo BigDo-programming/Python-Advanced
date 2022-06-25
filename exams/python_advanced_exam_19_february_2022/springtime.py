@@ -11,6 +11,7 @@ def start_spring(**kwargs):
         return_result.append(f"{key}:")
         for i in sorted(value):
             return_result.append(f"-{i}")
+
     return '\n'.join(return_result)
 
 
